@@ -5,7 +5,7 @@
 >
 > Mais le pire est que, pour construire des **UI**, j'ai souvent créé des composants "en tête" et c'est une erreur parce qu'avec de grand projet, si on ne "dessine" pas l'hiérarchie des **UI**, on risque de faire, refaire et re-refaire encore et encore.
 >
-> Ce petit programme n'utilise que le **jQuery** pour gérer le formulaire. Concernant le fichier de données, il suffit d'écrire du **JSON** des structures (souvent, c'est du copier-coller pour des framewords de JavaScript). C'est un "programme" rikiki et on n'a besoin qu'un **Notepad** pour rédiger et qu'un navigateur quelconque pourrait le faire fonctionner.
+> Ce petit programme n'utilise que le **jQuery** pour gérer le formulaire. Concernant le fichier de données, il suffit d'écrire du **JSON** des structures (souvent, c'est du copier-coller pour des framewords de JavaScript). C'est un "programme" rikiki et on n'a besoin qu'un **Notepad** pour rédiger et qu'un navigateur quelconque pourrait le faire fonctionner mais ça m'aide beaucoup ...
 
 ## L'exécution
 
