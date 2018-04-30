@@ -21,56 +21,91 @@
             font-size: 150%;
             border-radius: 10px;
         }
+
+        input[type='checkbox'] {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 5px;
+            border: 2px solid #555;
+        }
     </style>
 </head>
 
-<body>    
+<body>
     <div class="container">
         <h1 align="center" style="background-color: black; color:white; text-align: center; padding:20px; width: 100%;">Select the Fields to Show</h1>
         <hr/>
-        <p>The <b>Create</b>, <b>Read</b>, <b>Update</b> and <b>Delete</b> operations could contain <i>data</i> transfert between the <b>UI</b> and the <b>server</b>, NOT 
-            between the <b>server</b> and the <b>database</b> (because, the <b>signatures</b> of database's "tables" are representing by "<b>models</b>" already)</p>
+        <p>The
+            <b>Create</b>,
+            <b>Read</b>,
+            <b>Update</b> and
+            <b>Delete</b> operations could contain
+            <i>data</i> transfert between the
+            <b>UI</b> and the
+            <b>server</b>, NOT between the
+            <b>server</b> and the
+            <b>database</b> (because, the
+            <b>signatures</b> of database's "tables" are representing by "
+            <b>models</b>" already)</p>
         <table align="center" border="1">
             <tr>
-                <td style="padding: 10px; background-color:black; color:cyan"><b>UI Hierarchy</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <b>UI Hierarchy</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="ui_struct" onclick="myFunction('ui_struct')">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Create</b></td>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)">
+                    <b>Create</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="create" onclick="myFunction('create')">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Read</b></td>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)">
+                    <b>Read</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="read" onclick="myFunction('read')">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Update</b></td>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)">
+                    <b>Update</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="update" onclick="myFunction('update')">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Delete</b></td>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)">
+                    <b>Delete</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="delete" onclick="myFunction('delete')">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color:black; color:cyan"><b>Models</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <b>Models</b>
+                </td>
                 <td style="padding: 10px; background-color:black; color:cyan">
                     <input type="checkbox" id="models_struct" onclick="myFunction('models_struct')">
                 </td>
             </tr>
         </table>
         <hr/>
-        <p align="center"><button type="button" id="myCheck" class="btn" onclick="show()" style="font-size: 200%; font-weight:bold;padding: 20px">Submit</button></p>
-        <h3 align="center">[Hit "<b><font color="yellow">F12</font></b>" to see the result]</h3>
+        <p align="center">
+            <button type="button" id="myCheck" class="btn" onclick="show()" style="font-size: 200%; font-weight:bold;padding: 20px">Submit</button>
+        </p>
+        <h3 align="center">[Hit "
+            <b>
+                <font color="yellow">F12</font>
+            </b>" to see the result]</h3>
     </div>
 
 
