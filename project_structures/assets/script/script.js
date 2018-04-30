@@ -17,27 +17,6 @@ let ui_struct = {
     }
 }
 
-let requests_struct = {
-    // {
-    //      "afunction: ()": "explanation"
-    // }
-    create:{
-
-    },
-    read: {
-
-    },
-    update: {
-
-    },
-    delete: {
-
-    },
-    others: {
-
-    }
-}
-
 let create2server_struct = {}
 
 let readFromServer_struct = {}
