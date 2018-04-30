@@ -28,8 +28,8 @@
     <div class="container">
         <h1 align="center" style="background-color: black; color:white; text-align: center; padding:20px; width: 100%;">Select the Fields to Show</h1>
         <hr/>
-        <p>The <b>Create</b>, <b>Read</b>, <b>Update</b> and <b>Delete</b> operations could contain <i>data</i> (from the UI) that will be sent to the <b>server</b>, NOT from the <b>server</b> to the DB 
-            (because, the <b>signatures</b> to the DB are showed in "<b>models</b>" already)</p>
+        <p>The <b>Create</b>, <b>Read</b>, <b>Update</b> and <b>Delete</b> operations could contain <i>data</i> transfert between the <b>UI</b> and the <b>server</b>, NOT 
+            between the <b>server</b> and the <b>database</b> (because, the <b>signatures</b> of database's "tables" are representing by "<b>models</b>" already)</p>
         <table align="center" border="1">
             <tr>
                 <td style="padding: 10px; background-color:black; color:cyan"><b>UI Hierarchy</b></td>
@@ -103,8 +103,8 @@
             if (is_ui_struct) console.log("UI: " + JSON.stringify(ui_struct, null, 5))
             if (is_create) console.log("Create (data to Server): " + JSON.stringify(create2server_struct, null, 5))
             if (is_read) console.log("Read (data from the Server): " + JSON.stringify(readFromServer_struct, null, 5))
-            if (is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
-            if (is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
+            if (update_struct.length && is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
+            if (delete_struct.length && is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
             if (is_models_struct) console.log("Models: " + JSON.stringify(models_struct, null, 5))
         }
     </script>
