@@ -103,8 +103,8 @@
             if (is_ui_struct) console.log("UI: " + JSON.stringify(ui_struct, null, 5))
             if (is_create) console.log("Create (data to Server): " + JSON.stringify(create2server_struct, null, 5))
             if (is_read) console.log("Read (data from the Server): " + JSON.stringify(readFromServer_struct, null, 5))
-            if (update_struct.length && is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
-            if (delete_struct.length && is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
+            if (is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
+            if (is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
             if (is_models_struct) console.log("Models: " + JSON.stringify(models_struct, null, 5))
         }
     </script>
