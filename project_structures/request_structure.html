@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project Structures</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: gray;
+            font-size: 200%;
+        }
+
+        .btn {
+            background-color: black;
+            color: #308cf2;
+            border-color: #6ec0ef;
+            font-size: 150%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>    
+    <div class="container">
+        <h1 align="center" style="background-color: black; color:white; text-align: center; padding:20px; width: 100%;">Select the Fields to Show</h1>
+        <hr/>
+        <table align="center" border="1">
+            <tr>
+                <td style="padding: 10px; background-color:black; color:cyan"><b>UI Hierarchy</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="ui_struct" onclick="myFunction('ui_struct')">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Create</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="create" onclick="myFunction('create')">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Read</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="read" onclick="myFunction('read')">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Update</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="update" onclick="myFunction('update')">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:rgb(245, 210, 97)"><b>Delete</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="delete" onclick="myFunction('delete')">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:cyan"><b>Models</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="models_struct" onclick="myFunction('models_struct')">
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p align="center"><button type="button" id="myCheck" class="btn" onclick="show()" style="font-size: 200%; font-weight:bold;padding: 20px">Submit</button></p>
+        <h3 align="center">[Hit "<b><font color="yellow">F12</font></b>" to see the result]</h3>
+    </div>
+
+
+    <script src="./assets/script/script.js"></script>
+    <script>
+        let is_ui_struct = false
+        let is_create = false
+        let is_read = false
+        let is_update = false
+        let is_delete = false
+        let is_models_struct = false
+
+        let myFunction = (word) => {
+            let ui_struct_cb = document.getElementById("ui_struct")
+            let create_cb = document.getElementById("create")
+            let read_cb = document.getElementById("read")
+            let update_cb = document.getElementById("update")
+            let delete_cb = document.getElementById("delete")
+            let models_struct_cb = document.getElementById("models_struct")
+
+            if (word == "ui_struct") is_ui_struct = ui_struct_cb.checked
+            else if (word == "create") is_create = create_cb.checked
+            else if (word == "read") is_read = read_cb.checked
+            else if (word == "update") is_update = update_cb.checked
+            else if (word == "delete") is_delete = delete_cb.checked
+            else if (word == "models_struct") is_models_struct = models_struct_cb.checked
+        }
+
+        let show = () => {
+            if (is_ui_struct) console.log("UI: " + JSON.stringify(ui_struct, null, 5))
+            if (is_create) console.log("Create (data to Server): " + JSON.stringify(create2server_struct, null, 5))
+            if (is_read) console.log("Read (data from the Server): " + JSON.stringify(readFromServer_struct, null, 5))
+            if (update_struct.length && is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
+            if (delete_struct.length && is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
+            if (is_models_struct) console.log("Models: " + JSON.stringify(models_struct, null, 5))
+        }
+    </script>
+</body>
+
+</html>
