@@ -13,6 +13,6 @@
 
 ## Construction du fichier de données ([ici](https://github.com/DinhLeGaulois2/en_francais/blob/master/project_structures/assets/script/script.js))
 
-> **ATTENTION**: les noms des fichiers de base DEVRAIENT être conservés (vous pouvez biensûr les changer, mais il faut aussi faire des changements correspondants dans le fichier [html](https://github.com/DinhLeGaulois2/en_francais/blob/master/project_structures/request_structure.html).
+> **ATTENTION**: les noms des fichiers de base DEVRAIENT être conservés (vous pouvez biensûr les changer, mais il faut aussi faire des changements correspondants dans le fichier [html](https://github.com/DinhLeGaulois2/en_francais/blob/master/project_structures/request_structure.html)).
 
 ### Il suffit de construire des structures sous forme **JSON** (souvent, c'est juste du ***copier-coller***)
