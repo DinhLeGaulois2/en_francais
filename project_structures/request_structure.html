@@ -67,6 +67,12 @@
                     <input type="checkbox" id="models_struct" onclick="myFunction('models_struct')">
                 </td>
             </tr>
+            <tr>
+                <td style="padding: 10px; background-color:black; color:cyan"><b>Requests' Structure</b></td>
+                <td style="padding: 10px; background-color:black; color:cyan">
+                    <input type="checkbox" id="requests_struct" onclick="myFunction('requests_struct')">
+                </td>
+            </tr>
         </table>
         <hr/>
         <p align="center"><button type="button" id="myCheck" class="btn" onclick="show()" style="font-size: 200%; font-weight:bold;padding: 20px">Submit</button></p>
@@ -82,6 +88,7 @@
         let is_update = false
         let is_delete = false
         let is_models_struct = false
+        let is_requests_struct = false
 
         let myFunction = (word) => {
             let ui_struct_cb = document.getElementById("ui_struct")
@@ -90,6 +97,7 @@
             let update_cb = document.getElementById("update")
             let delete_cb = document.getElementById("delete")
             let models_struct_cb = document.getElementById("models_struct")
+            let requests_struct_cb = document.getElementById("requests_struct")
 
             if (word == "ui_struct") is_ui_struct = ui_struct_cb.checked
             else if (word == "create") is_create = create_cb.checked
@@ -97,15 +105,17 @@
             else if (word == "update") is_update = update_cb.checked
             else if (word == "delete") is_delete = delete_cb.checked
             else if (word == "models_struct") is_models_struct = models_struct_cb.checked
+            else if (word == "requests_struct") is_requests_struct = requests_struct_cb.checked
         }
 
         let show = () => {
             if (is_ui_struct) console.log("UI: " + JSON.stringify(ui_struct, null, 5))
             if (is_create) console.log("Create (data to Server): " + JSON.stringify(create2server_struct, null, 5))
             if (is_read) console.log("Read (data from the Server): " + JSON.stringify(readFromServer_struct, null, 5))
-            if (update_struct.length && is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
-            if (delete_struct.length && is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
+            if (is_update) console.log("Update: " + JSON.stringify(update_struct, null, 5))
+            if (is_delete) console.log("Delete: " + JSON.stringify(delete_struct, null, 5))
             if (is_models_struct) console.log("Models: " + JSON.stringify(models_struct, null, 5))
+            if (is_requests_struct) console.log("Requests: " + JSON.stringify(requests_struct, null, 5))
         }
     </script>
 </body>

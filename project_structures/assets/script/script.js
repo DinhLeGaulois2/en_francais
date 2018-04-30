@@ -5,8 +5,6 @@ let ui_struct = {
         addFileOne: {
             name: "AddOneContainer",
             data4Init: [],
-            dataFromForm: [],
-            handlers: []
         }
     },
 
@@ -15,8 +13,28 @@ let ui_struct = {
         displayFileOne: {
             name: "ShowOneContainer",
             dataIn: [],
-            handlers: []
         }
+    }
+}
+
+let requests_struct = {
+    // {
+    //      "afunction: ()": "explanation"
+    // }
+    create:{
+
+    },
+    read: {
+
+    },
+    update: {
+
+    },
+    delete: {
+
+    },
+    others: {
+
     }
 }
 
