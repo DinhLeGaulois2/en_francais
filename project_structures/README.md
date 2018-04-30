@@ -1,4 +1,4 @@
-# Project's Structure 
+# Des Structure d'un Projet
 
 ## But
 > J'ai fait des générateurs pour **React**, **React-Redux** et **Angular**. Ca fait peut-être 60-70% du travail, mais pour 30-40% restant, il faut les faire à la main. Par exemple, pour écrire dans les bases de données, j'ai besoin de voir la "signature" des colonnes ainsi que les types correspondants et pour faire des requêtes, j'ai besoin de voir des noms que j'ai données aux fonctions, etc. Ca ralentit beaucoup.
