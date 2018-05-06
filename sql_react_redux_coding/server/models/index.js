@@ -20,22 +20,28 @@ db.Sequelize = Sequelize;
 
 db.back2Db = require('../models/back2Db.js')(sequelize, Sequelize)
 db.backEnd = require('../models/backEnd.js')(sequelize, Sequelize)
+db.backEndNote = require('../models/backEndNote.js')(sequelize, Sequelize)
 db.backEnd_db = require('../models/backEnd_db.js')(sequelize, Sequelize)
 db.code = require('../models/code.js')(sequelize, Sequelize)
 db.codeGenerator = require('../models/codeGenerator.js')(sequelize, Sequelize)
 db.codePartOf = require('../models/codePartOf.js')(sequelize, Sequelize)
 db.constant = require('../models/constant.js')(sequelize, Sequelize)
 db.db = require('../models/db.js')(sequelize, Sequelize)
+db.dbNote = require('../models/dbNote.js')(sequelize, Sequelize)
 db.feature = require('../models/feature.js')(sequelize, Sequelize)
 db.featureNote = require('../models/featureNote.js')(sequelize, Sequelize)
 db.feature_kw = require('../models/feature_kw.js')(sequelize, Sequelize)
 db.front2back = require('../models/front2back.js')(sequelize, Sequelize)
 db.frontEnd = require('../models/frontEnd.js')(sequelize, Sequelize)
+db.frontEndNote = require('../models/frontEndNote.js')(sequelize, Sequelize)
 db.front_backEnd = require('../models/front_backEnd.js')(sequelize, Sequelize)
 db.kw = require('../models/kw.js')(sequelize, Sequelize)
 db.project = require('../models/project.js')(sequelize, Sequelize)
 db.user = require('../models/user.js')(sequelize, Sequelize)
 
+
+db.dbNote.belongsTo(db.db)
+db.db.hasMany(db.dbNote)
 
 db.backEnd_db.belongsTo(db.db)
 db.db.hasMany(db.backEnd_db)
@@ -55,6 +61,9 @@ db.backEnd_db.hasMany(db.back2Db)
 db.backEnd_db.belongsTo(db.backEnd)
 db.backEnd.hasMany(db.backEnd_db)
 
+db.backEndNote.belongsTo(db.backEnd)
+db.backEnd.hasMany(db.backEndNote)
+
 db.project.belongsTo(db.user)
 db.user.hasMany(db.project)
 
@@ -72,6 +81,9 @@ db.backEnd.hasMany(db.front_backEnd)
 
 db.front_backEnd.belongsTo(db.frontEnd)
 db.frontEnd.hasMany(db.front_backEnd)
+
+db.frontEndNote.belongsTo(db.frontEnd)
+db.frontEnd.hasMany(db.frontEndNote)
 
 db.feature_kw.belongsTo(db.kw)
 db.kw.hasMany(db.feature_kw)

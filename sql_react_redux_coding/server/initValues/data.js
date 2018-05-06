@@ -30,7 +30,10 @@ const data = [
     { type: "Platform", name: "J2EE-JEE" },
 
     { type: "Mobile App", name: "Android App" },
-    { type: "Mobile App", name: "iOS App" }
+    { type: "Mobile App", name: "iOS App" },
+
+    { type: "Project Type", name: "Professional" },
+    { type: "Project Type", name: "Personal" }
 ]
 
 module.exports = data

@@ -11,12 +11,6 @@ module.exports = function (sequelize, DataTypes) {
                 notEmpty: true,
             }
         },
-        type: {
-            type: DataTypes.STRING
-        },
-        typeName: {
-            type: DataTypes.STRING
-        },
         comment: {
             type: DataTypes.STRING(999)
         },
@@ -25,7 +19,16 @@ module.exports = function (sequelize, DataTypes) {
         },
         version: {
             type: DataTypes.INTEGER
-        }
+        },
+        cstTypeId: {
+            type: DataTypes.INTEGER
+        },
+        url: {
+            type: DataTypes.STRING(500)
+        },
+        cstTypeId: {
+            type: DataTypes.INTEGER
+        },
     });
 
     return Feature;

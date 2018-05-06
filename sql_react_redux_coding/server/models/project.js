@@ -20,6 +20,9 @@ module.exports = function (sequelize, DataTypes) {
                 notEmpty: true,
             }
         },
+        url: {
+            type: DataTypes.STRING(500)
+        },
         description: {
             type: DataTypes.STRING(999)
         }
