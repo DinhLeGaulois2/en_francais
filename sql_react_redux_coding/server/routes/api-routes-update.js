@@ -3,12 +3,12 @@ const Sequelize = require('sequelize');
 const db = require("../models");
 
 module.exports = function (app) {
-    app.put("api/add/user/:id", (req, res, next) => {
+    app.put("api/update/user", (req, res, next) => {
         const d = req.body
-        db.user.findAll({ where: { id: req.params.id } })
+        db.user.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.user.update(d, { where: { id: req.params.id } })
+                    db.user.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -17,12 +17,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/feature/:id", (req, res, next) => {
+    app.put("api/update/feature", (req, res, next) => {
         const d = req.body
-        db.feature.findAll({ where: { id: req.params.id } })
+        db.feature.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.feature.update(d, { where: { id: req.params.id } })
+                    db.feature.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -31,12 +31,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/code/:id", (req, res, next) => {
+    app.put("api/update/code", (req, res, next) => {
         const d = req.body
-        db.code.findAll({ where: { id: req.params.id } })
+        db.code.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.code.update(d, { where: { id: req.params.id } })
+                    db.code.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -45,12 +45,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/feature/note/:id", (req, res, next) => {
+    app.put("api/update/feature/note", (req, res, next) => {
         const d = req.body
-        db.featureNote.findAll({ where: { id: req.params.id } })
+        db.featureNote.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.featureNote.update(d, { where: { id: req.params.id } })
+                    db.featureNote.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -59,12 +59,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/generator/:id", (req, res, next) => {
+    app.put("api/update/generator", (req, res, next) => {
         const d = req.body
-        db.codeGenerator.findAll({ where: { id: req.params.id } })
+        db.codeGenerator.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.codeGenerator.update(d, { where: { id: req.params.id } })
+                    db.codeGenerator.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -73,12 +73,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/generator/part/:id", (req, res, next) => {
+    app.put("api/update/generator/part", (req, res, next) => {
         const d = req.body
-        db.codePartOf.findAll({ where: { id: req.params.id } })
+        db.codePartOf.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.codePartOf.update(d, { where: { id: req.params.id } })
+                    db.codePartOf.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -87,12 +87,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/project/:id", (req, res, next) => {
+    app.put("api/update/project", (req, res, next) => {
         const d = req.body
-        db.project.findAll({ where: { id: req.params.id } })
+        db.project.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.project.update(d, { where: { id: req.params.id } })
+                    db.project.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -101,12 +101,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/project/frontend/:id", (req, res, next) => {
+    app.put("api/update/project/frontend", (req, res, next) => {
         const d = req.body
-        db.frontEnd.findAll({ where: { id: req.params.id } })
+        db.frontEnd.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.frontEnd.update(d, { where: { id: req.params.id } })
+                    db.frontEnd.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -115,12 +115,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/project/backend/:id", (req, res, next) => {
+    app.put("api/update/project/backend", (req, res, next) => {
         const d = req.body
-        db.backEnd.findAll({ where: { id: req.params.id } })
+        db.backEnd.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.backEnd.update(d, { where: { id: req.params.id } })
+                    db.backEnd.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -129,12 +129,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/project/database/:id", (req, res, next) => {
+    app.put("api/update/project/database", (req, res, next) => {
         const d = req.body
-        db.db.findAll({ where: { id: req.params.id } })
+        db.db.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.db.update(d, { where: { id: req.params.id } })
+                    db.db.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -143,12 +143,12 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/project/back2Db/:id", (req, res, next) => {
+    app.put("api/update/project/back2Db", (req, res, next) => {
         const d = req.body
-        db.back2Db.findAll({ where: { id: req.params.id } })
+        db.back2Db.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.back2Db.update(d, { where: { id: req.params.id } })
+                    db.back2Db.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }
@@ -157,12 +157,54 @@ module.exports = function (app) {
             .catch(err => next(err))
     })
 
-    app.put("api/add/front2back/:id", (req, res, next) => {
+    app.put("api/update/front2back", (req, res, next) => {
         const d = req.body
-        db.front2back.findAll({ where: { id: req.params.id } })
+        db.front2back.findAll({ where: { id: d.id } })
             .then(data => {
                 if (data.length > 0) {
-                    db.front2back.update(d, { where: { id: req.params.id } })
+                    db.front2back.update(d, { where: { id: d.id } })
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json({ msg: "Object Not Found: No Updating!" })
+            })
+            .catch(err => next(err))
+    })
+
+    app.put("api/update/frontEndNote", (req, res, next) => {
+        const d = req.body
+        db.frontEndNote.findAll({ where: { id: d.id } })
+            .then(data => {
+                if (data.length > 0) {
+                    db.frontEndNote.update(d, { where: { id: d.id } })
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json({ msg: "Object Not Found: No Updating!" })
+            })
+            .catch(err => next(err))
+    })
+
+    app.put("api/update/backEndNote", (req, res, next) => {
+        const d = req.body
+        db.backEndNote.findAll({ where: { id: d.id } })
+            .then(data => {
+                if (data.length > 0) {
+                    db.backEndNote.update(d, { where: { id: d.id } })
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json({ msg: "Object Not Found: No Updating!" })
+            })
+            .catch(err => next(err))
+    })
+
+    app.put("api/update/dbNote", (req, res, next) => {
+        const d = req.body
+        db.dbNote.findAll({ where: { id: d.id } })
+            .then(data => {
+                if (data.length > 0) {
+                    db.dbNote.update(d, { where: { id: d.id } })
                         .then(data => res.status(200).json(data))
                         .catch(err => next(err))
                 }

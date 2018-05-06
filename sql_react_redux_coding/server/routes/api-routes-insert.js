@@ -172,4 +172,46 @@ module.exports = function (app) {
             })
             .catch(err => next(err))
     })
+
+    app.post("api/add/frontEndNote", (req, res, next) => {
+        const d = req.body
+        db.frontEndNote.findAll({ where: d })
+            .then(data => {
+                if (data.length == 0) {
+                    db.frontEndNote.create(d)
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json(data)
+            })
+            .catch(err => next(err))
+    })
+
+    app.post("api/add/backEndNote", (req, res, next) => {
+        const d = req.body
+        db.backEndNote.findAll({ where: d })
+            .then(data => {
+                if (data.length == 0) {
+                    db.backEndNote.create(d)
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json(data)
+            })
+            .catch(err => next(err))
+    })
+
+    app.post("api/add/dbNote", (req, res, next) => {
+        const d = req.body
+        db.dbNote.findAll({ where: d })
+            .then(data => {
+                if (data.length == 0) {
+                    db.dbNote.create(d)
+                        .then(data => res.status(200).json(data))
+                        .catch(err => next(err))
+                }
+                else res.status(200).json(data)
+            })
+            .catch(err => next(err))
+    })
 }

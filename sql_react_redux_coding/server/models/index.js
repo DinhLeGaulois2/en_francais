@@ -41,54 +41,54 @@ db.user = require('../models/user.js')(sequelize, Sequelize)
 
 
 db.dbNote.belongsTo(db.db)
-db.db.hasMany(db.dbNote)
+db.db.hasMany(db.dbNote, {onDelete: 'cascade', hooks: true})
 
 db.backEnd_db.belongsTo(db.db)
-db.db.hasMany(db.backEnd_db)
+db.db.hasMany(db.backEnd_db, {onDelete: 'cascade', hooks: true})
 
 db.codePartOf.belongsTo(db.codeGenerator)
-db.codeGenerator.hasMany(db.codePartOf)
+db.codeGenerator.hasMany(db.codePartOf, {onDelete: 'cascade', hooks: true})
 
 db.codeGenerator.belongsTo(db.user)
-db.user.hasMany(db.codeGenerator)
+db.user.hasMany(db.codeGenerator, {onDelete: 'cascade', hooks: true})
 
 db.featureNote.belongsTo(db.feature)
-db.feature.hasMany(db.featureNote)
+db.feature.hasMany(db.featureNote, {onDelete: 'cascade', hooks: true})
 
 db.back2Db.belongsTo(db.backEnd_db)
-db.backEnd_db.hasMany(db.back2Db)
+db.backEnd_db.hasMany(db.back2Db, {onDelete: 'cascade', hooks: true})
 
 db.backEnd_db.belongsTo(db.backEnd)
-db.backEnd.hasMany(db.backEnd_db)
+db.backEnd.hasMany(db.backEnd_db, {onDelete: 'cascade', hooks: true})
 
 db.backEndNote.belongsTo(db.backEnd)
-db.backEnd.hasMany(db.backEndNote)
+db.backEnd.hasMany(db.backEndNote, {onDelete: 'cascade', hooks: true})
 
 db.project.belongsTo(db.user)
-db.user.hasMany(db.project)
+db.user.hasMany(db.project, {onDelete: 'cascade', hooks: true})
 
 db.frontEnd.belongsTo(db.project)
-db.project.hasMany(db.frontEnd)
+db.project.hasMany(db.frontEnd, {onDelete: 'cascade', hooks: true})
 
 db.feature.belongsTo(db.user)
-db.user.hasMany(db.feature)
+db.user.hasMany(db.feature, {onDelete: 'cascade', hooks: true})
 
 db.code.belongsTo(db.feature)
-db.feature.hasMany(db.code)
+db.feature.hasMany(db.code, {onDelete: 'cascade', hooks: true})
 
 db.front_backEnd.belongsTo(db.backEnd)
-db.backEnd.hasMany(db.front_backEnd)
+db.backEnd.hasMany(db.front_backEnd, {onDelete: 'cascade', hooks: true})
 
 db.front_backEnd.belongsTo(db.frontEnd)
-db.frontEnd.hasMany(db.front_backEnd)
+db.frontEnd.hasMany(db.front_backEnd, {onDelete: 'cascade', hooks: true})
 
 db.frontEndNote.belongsTo(db.frontEnd)
-db.frontEnd.hasMany(db.frontEndNote)
+db.frontEnd.hasMany(db.frontEndNote, {onDelete: 'cascade', hooks: true})
 
 db.feature_kw.belongsTo(db.kw)
-db.kw.hasMany(db.feature_kw)
+db.kw.hasMany(db.feature_kw, {onDelete: 'cascade', hooks: true})
 
 db.front2back.belongsTo(db.front_backEnd)
-db.front_backEnd.hasMany(db.front2back)
+db.front_backEnd.hasMany(db.front2back, {onDelete: 'cascade', hooks: true})
 
 module.exports = db;
