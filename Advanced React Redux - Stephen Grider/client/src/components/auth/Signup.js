@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
 class Signup extends Component {
+    onSubmit = (formProps) => {
+        this.props.signup(formProps)
+    }
+
     render() {
+        const { handleSubmit } = this.props
         return (
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 <fieldset>
                     <label>Email</label>
                     <Field
@@ -23,10 +31,14 @@ class Signup extends Component {
                         autoComplete="none"
                     />
                 </fieldset>
+                <button>Sign Up!</button>
             </form>
         )
     }
 }
 
-// "ReduxForm" is just like "connect"...
-export default reduxForm({ form: 'signup' })(Signup)
+// kind of factorization!!!!
+export default compose(
+    connect(null, actions),
+    reduxForm({ form: 'signup' })    
+)(Signup)
