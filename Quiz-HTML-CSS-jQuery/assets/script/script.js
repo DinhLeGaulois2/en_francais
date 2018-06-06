@@ -118,9 +118,9 @@ const resetPlayingQuestion = () => {
 
 const setNewQuestion = (direction) => {
     if (direction == quizConstants.BACKWARD)
-        quizVars.playingIndex = (quizVars.playingIndex - 1) % quizVars.indexList.length
+        quizVars.playingIndex = ((quizVars.playingIndex - 1) + quizVars.randList.length) % quizVars.randList.length
     else if (direction == quizConstants.FORWARD)
-        quizVars.playingIndex = (quizVars.playingIndex + 1) % quizVars.indexList.length
+        quizVars.playingIndex = ((quizVars.playingIndex + 1) % quizVars.randList.length)
     let o = quizVars.indexList[quizVars.randList[quizVars.playingIndex]];
     const quizIndex = o.quiz_num;
     const questionNumber = o.question_num;
