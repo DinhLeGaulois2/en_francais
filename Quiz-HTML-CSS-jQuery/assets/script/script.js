@@ -28,19 +28,23 @@ const selectAPA = (num, val) => {
 const showQuestionNP_Ans = () => {
     let display = "";
     $("#titleDiv").html("<div class='title'><font ='cyan'>" + playingQuestion.quizTitle + "</font></div>");
-    if (playingQuestion.question.txt.length) display = "<div class='question'><b><u>Question:</u></b> " + playingQuestion.question.txt + "</div>";
-    if (playingQuestion.question.img.length) display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
+    if (playingQuestion.question.txt.length)
+        display = "<div class='question'><b><u>Question:</u></b> " + playingQuestion.question.txt + "</div>";
+    if (playingQuestion.question.img.length)
+        display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
     $("#questionDiv").html("<br/>" + display + "<hr/>");
     if (playingQuestion.question.pA.length > 0) {
         display = "<table>"
         for (let i = 0; i < playingQuestion.question.pA.length; i++) {
             // a proposed answer with/without image
-            let pa = "<span id='pa" + i + "'>" + playingQuestion.question.pA[i].txt + "</span>";
-            if(playingQuestion.question.pA[i].img.length)
+            let pa = "";
+            if (playingQuestion.question.pA[i].txt.length)
+                pa = "<span id='pa" + i + "'>" + playingQuestion.question.pA[i].txt + "</span>";
+            if (playingQuestion.question.pA[i].img.length)
                 pa += "<p align='center'><img src='" + playingQuestion.question.pA[i].img + "' border='1' /></p>";
 
-            display += "<tr><td style='padding: 5px; vertical-align:top'><input type='checkbox' id='myCB" + i + 
-                "' onclick=selectPA_num(myCB" + i + ") value=" + i + 
+            display += "<tr><td style='padding: 5px; vertical-align:top'><input type='checkbox' id='myCB" + i +
+                "' onclick=selectPA_num(myCB" + i + ") value=" + i +
                 "></td><td class='propAns'>" + pa + "</td><tr>";
         }
         display += "</table>"
@@ -82,11 +86,11 @@ const play = (type) => {
     // to be sure that we have at least a question to play...
     if (quizVars.indexList.length > 0) {
         if (type == quizConstants.FORWARD) {
-            if(playingQuestion.isAnswersChecked){
+            if (playingQuestion.isAnswersChecked) {
                 setNewQuestion(quizConstants.FORWARD);
                 showQuestionNP_Ans();
             }
-            else{
+            else {
                 playingQuestion.isAnswersChecked = true;
                 showCheckedAnswer()
             }
@@ -96,11 +100,11 @@ const play = (type) => {
             showQuestionNP_Ans();
         }
         else { // Replay
-            if(playingQuestion.isAnswersChecked){
+            if (playingQuestion.isAnswersChecked) {
                 resetPlayingQuestion();
                 showQuestionNP_Ans();
             }
-            else{
+            else {
                 playingQuestion.isAnswersChecked = true;
                 showCheckedAnswer()
             }
