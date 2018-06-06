@@ -1,0 +1,59 @@
+body {
+	background-color: black;
+	color: cyan;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.container {
+	width: 95%;
+}
+
+.title {
+	background-color: grey;
+	color:yellow;
+	font-weight: bold;
+	text-align: center;
+	font-size: 2em;
+	padding: 20px auto;
+	width: 100%;
+}
+
+.question, .propAns {
+	background-color: #acd2e0;
+	padding: 5px;
+	font-size: 1.5em;
+	border: 3px solid gray;
+}
+
+.navBar {
+	position: fixed;
+	left: 0.4%;
+	bottom: 0;
+	width: 100%;
+}
+
+.navBtn {
+	width: 33%;
+}
+
+.navBtn:hover {
+	background-color: #3eccb0;
+	color: red;
+	cursor: pointer;
+}
+
+.propAns, .question {
+	background-color: #abdef9;
+	color: black;
+	border-radius: 5px;
+	width: 100%;
+	padding: 5px 10px;
+	font-size: 2em;
+}
+
+input[type="checkbox"] {
+	width: 2em;
+	height: 2em;
+	padding: 10px;
+}
