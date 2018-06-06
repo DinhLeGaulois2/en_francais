@@ -1,4 +1,19 @@
-# QUIZZES
+# QUIZ Using HTML, CSS and jQuery
+
+## Aim
+> To create a **Quiz** quickly without using any database, for one lesson (chapter, book, document, etc.) which could work any where without any installation nor compilation.
+>
+> Advantages:
+>    * Work on any device (computer, smartphone);
+>    * Work with any Operating System (Windows, Linux, etc.);
+>    * No need any installation;
+>    * No need any compilation;
+>    * We could combine as much **quizzes** (to form a giant one) by **copy/paste**;
+>    * etc.
+>
+> Disadvantes:
+>    * Create **Quiz** manually (but we could easily replace it with data from a database);
+>    * To update code (logical), we need to replace for each existing **Quizzes**;
 
 ## Construction My New Quiz
 > 1. Copy the content of "**quiz_construction/model/myQuiz.js**"
@@ -8,20 +23,20 @@
 ```javascript
 const playingQuizzes = [
     { // start a quiz
-        title: "",     // Mendatory
+        title: "",     // Mandatory
         deweyCode: -1, // Optional: if Any...
         deweyName: "", // Optional: if Any...
         comment: "",   // Optional: if Any...
         ref: "",       // Optional: if Any...
-        questions: [
+        questions: [ // All questions (with its proposed answers) of a quiz
             { // start a question
-                txt: "",     // Mendatory
+                txt: "",     // Mandatory
                 img: "",     // Optional: if Any...
                 subject: "", // Optional: if Any...
                 ref: "",     // Optional: if Any...
-                p_ans: [
+                p_ans: [  // --> proposed answers
                     { // start prop-answer
-                        txt: "",   // Mendatory
+                        txt: "",   // Mandatory
                         img: "",   // Optional: if Any...
                         isGood: false,
                     }, // end prop-answer
