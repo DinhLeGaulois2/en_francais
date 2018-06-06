@@ -1,5 +1,5 @@
 # QUIZ Using HTML, CSS and jQuery
-## [We have a quiz ready for test. Replace it with your own by following instructions below]
+### [We have a quiz ready for test. Replace it with your own by following instructions below]
 
 ## Aim
 > To create a **Quiz** quickly without using any database (for a lesson, a chapter, a book, a document, etc.) which could work any where without any installation nor compilation.
@@ -50,6 +50,9 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 
 ## Execution
 > Click on **myQuiz.html** (you could rename it)
+
+## Note
+### On "**Replay**" mode, the order of ***proposed answers*** is mixed very time to avoid our brain to memorize the order. The goal is to improve the learning process ;-)
 
 ---------------
 

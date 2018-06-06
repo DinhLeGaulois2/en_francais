@@ -118,6 +118,7 @@ const resetPlayingQuestion = () => {
     for (let i = 0; i < listPA.length; i++) {
         listPA[i].isSelected = false;
     }
+    playingQuestion.question.pA = mixPA(playingQuestion.question.pA);
 }
 
 const setNewQuestion = (direction) => {
