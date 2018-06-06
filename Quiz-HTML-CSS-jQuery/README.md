@@ -31,14 +31,14 @@ const playingQuizzes = [
         ref: "",       // Optional: if Any...
         questions: [ // All questions (with its proposed answers) of a quiz
             { // start a question
-                txt: "",     // Mandatory
-                img: "",     // Optional: if Any...
+                txt: "",     // Mandatory (question in "text")
+                img: "",     // Optional: if Any... (an URL of an image for this question)
                 subject: "", // Optional: if Any...
                 ref: "",     // Optional: if Any...
                 p_ans: [  // --> proposed answers
                     { // start prop-answer
-                        txt: "",   // Mandatory
-                        img: "",   // Optional: if Any...
+                        txt: "",   // Mandatory (proposed answer in "text")
+                        img: "",   // Optional: if Any...  (an URL of an image for this proposed answer)
                         isGood: false,
                     }, // end prop-answer
                 ]
