@@ -22,7 +22,7 @@
 
 ## How to fill data
 ```javascript
-const playingQuizzes = [
+const playingQuizzes = [ // we could put several quizzes in this Array ...
     { // start a quiz
         title: "",     // It would be nice to have a title for this Quiz
         deweyCode: -1, // Optional: if Any...
