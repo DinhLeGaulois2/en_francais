@@ -24,20 +24,20 @@
 ```javascript
 const playingQuizzes = [
     { // start a quiz
-        title: "",     // Mandatory
+        title: "",     // It would be nice to have a title for this Quiz
         deweyCode: -1, // Optional: if Any...
         deweyName: "", // Optional: if Any...
         comment: "",   // Optional: if Any...
         ref: "",       // Optional: if Any...
         questions: [ // All questions (with its proposed answers) of a quiz
             { // start a question
-                txt: "",     // Mandatory (question in "text")
+                txt: "",     // question in "text"
                 img: "",     // Optional: if Any... (an URL of an image for this question)
                 subject: "", // Optional: if Any...
                 ref: "",     // Optional: if Any...
                 p_ans: [  // --> proposed answers
                     { // start prop-answer
-                        txt: "",   // Mandatory (proposed answer in "text")
+                        txt: "",   // proposed answer in "text"
                         img: "",   // Optional: if Any...  (an URL of an image for this proposed answer)
                         isGood: false,
                     }, // end prop-answer
