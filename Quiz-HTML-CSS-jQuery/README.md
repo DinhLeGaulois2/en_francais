@@ -48,7 +48,7 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 ];
 ```
 
-## Excecution
+## Execution
 > Click on **myQuiz.html** (you could rename it)
 
 ---------------
