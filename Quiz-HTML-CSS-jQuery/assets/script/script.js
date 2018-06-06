@@ -80,6 +80,7 @@ const showCheckedAnswer = () => {
 const autoplay = () => {
     if (quizVars.autoplayInterval > 0) {
         clearInterval(quizVars.autoplayInterval);
+        quizVars.autoplayInterval = -1;
         $("#btn_backward").prop("disabled", false);
         $("#btn_replay").prop("disabled", false);
         $("#btn_forward").prop("disabled", false);
