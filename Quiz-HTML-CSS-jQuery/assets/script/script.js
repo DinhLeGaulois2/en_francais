@@ -53,6 +53,8 @@ const showQuestionNP_Ans = () => {
         display += "</table>"
         $("#propAnsDiv").html("<span class='question'><b><u>Proposed Answer(s):</u></b></span><br/><br/>" + display);
     }
+    else // If we don't have proposed answer for this question, we need to clear the previous ones
+        $("#propAnsDiv").html();
 }
 
 const setAutoplayTime = (num_seconds) => {
