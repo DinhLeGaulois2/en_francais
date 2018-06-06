@@ -1,4 +1,5 @@
 # QUIZ Using HTML, CSS and jQuery
+# [We have a quiz ready for test. Replace it we you own by following instruction below]
 
 ## Aim
 > To create a **Quiz** quickly without using any database (for a lesson, a chapter, a book, a document, etc.) which could work any where without any installation nor compilation.
@@ -46,6 +47,9 @@ const playingQuizzes = [
     }, // end a quiz
 ];
 ```
+
+## Excecution
+> Click on **myQuiz.html** (you could rename it)
 
 ---------------
 
