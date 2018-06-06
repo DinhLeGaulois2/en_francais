@@ -12,7 +12,7 @@
 >    * We could combine as much **quizzes** (to form a giant one) by **copy/paste**;
 >    * etc.
 >
-> Disadvantes:
+> Disadvantages:
 >    * Create **Quiz** manually (but we could easily replace it with data from a database);
 >    * To update code (logical), we need to replace for each existing **Quizzes**;
 
