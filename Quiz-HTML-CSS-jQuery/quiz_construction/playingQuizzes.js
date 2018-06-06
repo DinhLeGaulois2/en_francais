@@ -1,6 +1,6 @@
 const playingQuizzes = [
     { // start a quiz
-        title: "Counting",    
+        title: "Number in Word",    
         deweyCode: -1,
         deweyName: "",
         comment: "",
@@ -9,7 +9,7 @@ const playingQuizzes = [
             { // start a question
                 txt: "1 in Word",
                 img: "",
-                subject: "counting",
+                subject: "Number in Word",
                 ref: "",
                 p_ans: [
                     { // start prop-answer
@@ -42,7 +42,7 @@ const playingQuizzes = [
             { // start a question
                 txt: "2 in Word",
                 img: "",
-                subject: "counting",
+                subject: "Number in Word",
                 ref: "",
                 p_ans: [
                     { // start prop-answer
@@ -75,7 +75,7 @@ const playingQuizzes = [
             { // start a question
                 txt: "3 in Word",
                 img: "",
-                subject: "counting",
+                subject: "Number in Word",
                 ref: "",
                 p_ans: [
                     { // start prop-answer
@@ -108,7 +108,7 @@ const playingQuizzes = [
             { // start a question
                 txt: "4 in Word",
                 img: "",
-                subject: "counting",
+                subject: "Number in Word",
                 ref: "",
                 p_ans: [
                     { // start prop-answer
@@ -141,7 +141,7 @@ const playingQuizzes = [
             { // start a question
                 txt: "5 in Word",
                 img: "",
-                subject: "counting",
+                subject: "Number in Word",
                 ref: "",
                 p_ans: [
                     { // start prop-answer
