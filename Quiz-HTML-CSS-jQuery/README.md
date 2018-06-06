@@ -51,7 +51,7 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 ## Execution
 > Click on **myQuiz**.html (you could rename it but KEEP the extension "**.html**").
 
-![alt text](assets/img/quizPlaying.jpg")
+![alt text](assets/img/quizPlaying.jpg)
 
 ## Note
 > * On "**Replay**" mode, the order of ***proposed answers*** is mixed very time to avoid our brain to memorize the order. The goal is to improve the learning process ;-)
