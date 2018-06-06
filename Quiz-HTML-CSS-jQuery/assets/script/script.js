@@ -58,14 +58,6 @@ const showQuestionNP_Ans = () => {
         $("#propAnsDiv").html();
 }
 
-const setAutoplayTime = (num_seconds) => {
-    quizVars.autoplayNumSeconds = num_seconds;    
-    clearInterval(quizVars.autoplayInterval);
-    quizVars.autoplayInterval = setInterval(() => {
-        play(quizVars.lastPlayingType);
-    }, quizVars.autoplayNumSeconds * 1000)
-}
-
 const showCheckedAnswer = () => {
     for (let i = 0; i < playingQuestion.question.pA.length; i++) {
         $("#myCB" + i).prop("disabled", true);
@@ -79,6 +71,14 @@ const showCheckedAnswer = () => {
                 $("#pa" + i).html(ans.txt);
         }
     }
+}
+
+const setAutoplayTime = (num_seconds) => {
+    quizVars.autoplayNumSeconds = num_seconds;    
+    clearInterval(quizVars.autoplayInterval);
+    quizVars.autoplayInterval = setInterval(() => {
+        play(quizVars.lastPlayingType);
+    }, quizVars.autoplayNumSeconds * 1000)
 }
 
 // Handler for a button: On/Off action...
@@ -99,7 +99,7 @@ const autoplay = () => {
         $("#btn_replay").prop("disabled", true);
         $("#btn_forward").prop("disabled", true);
         quizVars.autoplayInterval = setInterval(() => {
-            play(quizVars.lastPlayingType);
+            play(quizConstants.FORWARD);
         }, quizVars.autoplayNumSeconds * 1000)
     }
 }
