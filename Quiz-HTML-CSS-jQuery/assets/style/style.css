@@ -2,7 +2,7 @@ body {
 	background-color: black;
 	color: cyan;
 	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .container {
@@ -28,19 +28,8 @@ body {
 
 .navBar {
 	position: fixed;
-	left: 0.4%;
 	bottom: 0;
-	width: 100%;
-}
-
-.navBtn {
-	width: 33%;
-}
-
-.navBtn:hover {
-	background-color: #3eccb0;
-	color: red;
-	cursor: pointer;
+	width: 93%;
 }
 
 .propAns, .question {
@@ -49,6 +38,7 @@ body {
 	border-radius: 5px;
 	width: 100%;
 	padding: 5px 10px;
+	margin: 5px;
 	font-size: 2em;
 }
 
