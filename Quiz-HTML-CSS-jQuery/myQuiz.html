@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Quiz</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -15,17 +15,24 @@
 </head>
 
 <body>
-    <div id="titleDiv"></div>      
+    <div id="titleDiv"></div>
     <div class="container">
-        <div id="questionDiv"></div>    
-        <div id="propAnsDiv"></div>    
+        <div id="questionDiv"></div>
+        <div id="propAnsDiv"></div>
         <div class="navBar">
-            <button type="button" onclick=playDirection(1) class="btn btn-primary navBtn"><span class="glyphicon glyphicon-step-backward"></span></button>
-            <button type="button" id="btn_replay" onclick=playDirection(2) class="btn btn-primary navBtn"><span class="glyphicon glyphicon-repeat"></span></button>
-            <button type="button" onclick=playDirection(0) class="btn btn-primary navBtn"><span class="glyphicon glyphicon-step-forward"></span></button>
+            <button type="button" id="btn_backward" onclick=playDirection(1) class="btn btn-primary col-sm-3 ">
+                <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+            <button type="button" id="btn_replay" onclick=playDirection(2) class="btn btn-primary col-sm-3">
+                <span class="glyphicon glyphicon-repeat"></span>
+            </button>
+            <button type="button" id="btn_forward" onclick=playDirection(0) class="btn btn-primary col-sm-3">
+                <span class="glyphicon glyphicon-step-forward"></span>
+            </button>
+            <button type="button" onclick=autoplay() class="btn btn-primary col-sm-3">Autoplay</button>
         </div>
     </div>
-    
+
     <script src="assets/script/script.js"></script>
     <script>        
         // Checkboxes' Handler

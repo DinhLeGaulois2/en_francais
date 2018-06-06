@@ -3,6 +3,9 @@ let quizVars = {
     randList: [],  // [integer]
     playingIndex: -1,
     isRandom: true,
+    lastPlayingType: quizConstants.FORWARD,
+    autoplayInterval: -1,
+    autoplayNumSeconds: 5
 };
 
 let playingQuestion = {
@@ -52,6 +55,10 @@ const showQuestionNP_Ans = () => {
     }
 }
 
+const setAutoplayTime = (num_seconds) => {
+    quizVars.autoplayNumSeconds = num_seconds;
+}
+
 const showCheckedAnswer = () => {
     for (let i = 0; i < playingQuestion.question.pA.length; i++) {
         $("#myCB" + i).prop("disabled", true);
@@ -64,6 +71,25 @@ const showCheckedAnswer = () => {
             else
                 $("#pa" + i).html(ans.txt);
         }
+    }
+}
+
+// Handler for a button: On/Off action...
+const autoplay = () => {
+    if (quizVars.autoplayInterval > 0) {
+        clearInterval(quizVars.autoplayInterval);
+        $("#btn_backward").prop("disabled", false);
+        $("#btn_replay").prop("disabled", false);
+        $("#btn_forward").prop("disabled", false);
+    }
+    else {
+        $("#btn_backward").prop("disabled", true);
+        $("#btn_replay").prop("disabled", true);
+        $("#btn_forward").prop("disabled", true);
+        // play(quizVars.lastPlayingType);
+        quizVars.autoplayInterval = setInterval(() => {
+            play(quizVars.lastPlayingType);
+        }, quizVars.autoplayNumSeconds * 1000)
     }
 }
 
@@ -81,6 +107,7 @@ const showCheckedAnswer = () => {
     -------------------------------------------------------------------------
 */
 const play = (type) => {
+    quizVars.lastPlayingType = type;
     if (!quizVars.indexList.length)
         setIndexList();
 
@@ -146,10 +173,12 @@ const setNewQuestion = (direction) => {
         ref: ques.ref,
         pA: ques.p_ans.length > 0 ? mixPA(ques.p_ans) : []
     };
-    if (ques.p_ans.length == 0) // no proposed answers --> No REPLAY
-        $("#btn_replay").prop("disabled", true);
-    else
-        $("#btn_replay").prop("disabled", false);
+    if (quizVars.autoplayInterval < 1) {
+        if (ques.p_ans.length == 0) // no proposed answers --> No REPLAY
+            $("#btn_replay").prop("disabled", true);
+        else
+            $("#btn_replay").prop("disabled", false);
+    }
 }
 
 const mixPA = (pa) => {
