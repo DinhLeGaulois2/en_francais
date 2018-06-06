@@ -20,16 +20,39 @@
         <div id="questionDiv"></div>
         <div id="propAnsDiv"></div>
         <div class="navBar">
-            <button type="button" id="btn_backward" onclick=playDirection(1) class="btn btn-primary col-sm-3 ">
-                <span class="glyphicon glyphicon-step-backward"></span>
-            </button>
-            <button type="button" id="btn_replay" onclick=playDirection(2) class="btn btn-primary col-sm-3">
-                <span class="glyphicon glyphicon-repeat"></span>
-            </button>
-            <button type="button" id="btn_forward" onclick=playDirection(0) class="btn btn-primary col-sm-3">
-                <span class="glyphicon glyphicon-step-forward"></span>
-            </button>
-            <button type="button" onclick=autoplay() class="btn btn-primary col-sm-3">Autoplay</button>
+            <div class="row" style="font-size:1.5em">
+                <select name="autoplaySeconds" id="autoplaySeconds" style="color:black; background-color:#3679b6;"
+                    hidden="hidden">
+                    <option value=5 selected>Delay for Autoplay (5 s)</option>
+                    <option value=1>Delay for Autoplay (1s)</option>
+                    <option value=2>Delay for Autoplay (2s)</option>
+                    <option value=3>Delay for Autoplay (3s)</option>
+                    <option value=4>Delay for Autoplay (4s)</option>
+                    <option value=5>Delay for Autoplay (5s)</option>
+                    <option value=6>Delay for Autoplay (6s)</option>
+                    <option value=7>Delay for Autoplay (7s)</option>
+                    <option value=8>Delay for Autoplay (8s)</option>
+                    <option value=9>Delay for Autoplay (9s)</option>
+                    <option value=10>Delay for Autoplay (10s)</option>
+                    <option value=11>Delay for Autoplay (11s)</option>
+                    <option value=12>Delay for Autoplay (12s)</option>
+                    <option value=13>Delay for Autoplay (13s)</option>
+                    <option value=14>Delay for Autoplay (14s)</option>
+                    <option value=15>Delay for Autoplay (15s)</option>
+                </select>
+            </div>
+            <div class="row">
+                <button type="button" onclick=autoplay() class="btn btn-primary col-sm-3">Autoplay</button>
+                <button type="button" id="btn_backward" onclick=playDirection(1) class="btn btn-primary col-sm-3 ">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                </button>
+                <button type="button" id="btn_replay" onclick=playDirection(2) class="btn btn-primary col-sm-3">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                </button>
+                <button type="button" id="btn_forward" onclick=playDirection(0) class="btn btn-primary col-sm-3">
+                    <span class="glyphicon glyphicon-step-forward"></span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -43,6 +66,19 @@
         const playDirection = (val) => {
             play(val)
         }
+
+        $("#autoplaySeconds").click(() => {
+            localStorage.setItem("autoplayDelay", $("#autoplaySeconds").val());
+            setAutoplayTime($("#autoplaySeconds").val());
+        })
+
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            if (localStorage.getItem("autoplayDelay") === null) {
+                setAutoplayTime($('#autoplaySeconds').find(":selected").val());
+                $("#autoplaySeconds").hide();
+            }
+        });
 
         // First time...
         play(quizConstants.FORWARD);

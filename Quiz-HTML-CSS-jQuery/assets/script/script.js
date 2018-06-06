@@ -5,7 +5,8 @@ let quizVars = {
     isRandom: true,
     lastPlayingType: quizConstants.FORWARD,
     autoplayInterval: -1,
-    autoplayNumSeconds: 5
+    autoplayNumSeconds: 5,
+    isAutoplay: false
 };
 
 let playingQuestion = {
@@ -58,7 +59,11 @@ const showQuestionNP_Ans = () => {
 }
 
 const setAutoplayTime = (num_seconds) => {
-    quizVars.autoplayNumSeconds = num_seconds;
+    quizVars.autoplayNumSeconds = num_seconds;    
+    clearInterval(quizVars.autoplayInterval);
+    quizVars.autoplayInterval = setInterval(() => {
+        play(quizVars.lastPlayingType);
+    }, quizVars.autoplayNumSeconds * 1000)
 }
 
 const showCheckedAnswer = () => {
@@ -78,6 +83,10 @@ const showCheckedAnswer = () => {
 
 // Handler for a button: On/Off action...
 const autoplay = () => {
+    quizVars.isAutoplay = !quizVars.isAutoplay;
+    if (quizVars.isAutoplay)
+        $("#autoplaySeconds").show();
+    else $("#autoplaySeconds").hide();
     if (quizVars.autoplayInterval > 0) {
         clearInterval(quizVars.autoplayInterval);
         quizVars.autoplayInterval = -1;
@@ -89,7 +98,6 @@ const autoplay = () => {
         $("#btn_backward").prop("disabled", true);
         $("#btn_replay").prop("disabled", true);
         $("#btn_forward").prop("disabled", true);
-        // play(quizVars.lastPlayingType);
         quizVars.autoplayInterval = setInterval(() => {
             play(quizVars.lastPlayingType);
         }, quizVars.autoplayNumSeconds * 1000)
