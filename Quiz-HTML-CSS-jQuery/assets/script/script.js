@@ -52,7 +52,7 @@ const showCheckedAnswer = () => {
     for (let i = 0; i < playingQuestion.question.pA.length; i++) {
         const ans = playingQuestion.question.pA[i];
         if (ans.isGood)
-            $("#pa" + i).html("<font color='#00ff33'><b>" + ans.txt + "</b></font>");
+            $("#pa" + i).html("<font color='green'><b>" + ans.txt + "</b></font>");
         else {
             if (ans.isSelected)
                 $("#pa" + i).html("<font color='red'><b><del>" + ans.txt + "</del></b></font>");
