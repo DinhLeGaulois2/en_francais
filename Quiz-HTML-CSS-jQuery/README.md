@@ -46,3 +46,9 @@ const playingQuizzes = [
     }, // end a quiz
 ];
 ```
+
+---------------
+
+## Author
+* Dinh HUYNH - All Rights Reserved!
+* dinh.hu19@yahoo.com
