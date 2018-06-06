@@ -54,6 +54,7 @@ const showQuestionNP_Ans = () => {
 
 const showCheckedAnswer = () => {
     for (let i = 0; i < playingQuestion.question.pA.length; i++) {
+        $("#myCB" + i).prop("disabled", true);
         const ans = playingQuestion.question.pA[i];
         if (ans.isGood)
             $("#pa" + i).html("<font color='green'><b>" + ans.txt + "</b></font>");
