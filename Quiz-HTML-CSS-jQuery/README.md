@@ -1,7 +1,7 @@
 # QUIZ Using HTML, CSS and jQuery
 
 ## Aim
-> To create a **Quiz** quickly without using any database (for one lesson, a chapter, a book, a document, etc.) which could work any where without any installation nor compilation.
+> To create a **Quiz** quickly without using any database (for a lesson, a chapter, a book, a document, etc.) which could work any where without any installation nor compilation.
 >
 > Advantages:
 >    * Work on any device (computer, smartphone);
