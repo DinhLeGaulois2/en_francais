@@ -33,7 +33,7 @@ const showQuestionNP_Ans = () => {
     let display = "";
     $("#titleDiv").html("<div class='title'><font ='cyan'>" + playingQuestion.quizTitle + "</font></div>");
     if (playingQuestion.question.txt.length)
-        display = "<div class='question'><b><u>Question:</u></b> " + playingQuestion.question.txt + "</div>";
+        display = "<div class='question' style='text-align:center'>" + playingQuestion.question.txt + "</div>";
     if (playingQuestion.question.img.length)
         display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
     $("#questionDiv").html("<br/>" + display + "<hr/>");
