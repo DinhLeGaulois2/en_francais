@@ -6,6 +6,7 @@ let quizVars = {
     lastPlayingType: quizConstants.FORWARD,
     autoplayInterval: -1,
     autoplayNumSeconds: 5,
+    autoplayRemainingTime: 0,
     isAutoplay: false
 };
 
@@ -52,7 +53,9 @@ const showQuestionNP_Ans = () => {
                 "></td><td class='propAns'>" + pa + "</td><tr>";
         }
         display += "</table>"
-        $("#propAnsDiv").html("<span class='question'><b><u>Proposed Answer(s):</u></b></span><br/><br/>" + display);
+        $("#propAnsDiv").html("<div class='question'><b><u>Proposed Answer(s):</u></b> " +
+            "<span id='autoplayRemainingTime'></span></div>" +
+            display);
     }
     else // If we don't have proposed answer for this question, we need to clear the previous ones
         $("#propAnsDiv").html();
@@ -73,24 +76,39 @@ const showCheckedAnswer = () => {
     }
 }
 
-const initAutoplayDelay = (num_seconds) => {    
-    quizVars.autoplayNumSeconds = num_seconds;   
+const initAutoplayDelay = (num_seconds) => {
+    quizVars.autoplayNumSeconds = num_seconds;
+    quizVars.autoplayRemainingTime = num_seconds;
 }
 
 const setAutoplayTime = (num_seconds) => {
-    quizVars.autoplayNumSeconds = num_seconds;    
+    quizVars.autoplayNumSeconds = num_seconds;
+    quizVars.autoplayRemainingTime = num_seconds;
     clearInterval(quizVars.autoplayInterval);
+    $("#autoplayRemainingTime").html("(" + num_seconds + "s remaining)");
     quizVars.autoplayInterval = setInterval(() => {
-        play(quizVars.lastPlayingType);
-    }, quizVars.autoplayNumSeconds * 1000)
+        quizVars.autoplayRemainingTime--;
+        if (quizVars.autoplayRemainingTime == 0) {
+            $("#autoplayRemainingTime").html("");
+            quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
+            play(quizVars.lastPlayingType);
+        }
+        $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
+    }, 1000)
 }
 
 // Handler for a button: On/Off action...
 const autoplay = () => {
     quizVars.isAutoplay = !quizVars.isAutoplay;
-    if (quizVars.isAutoplay)
+    $("#autoplayRemainingTime").show();
+    if (quizVars.isAutoplay) {
         $("#autoplaySeconds").show();
-    else $("#autoplaySeconds").hide();
+        $("#autoplayRemainingTime").show();
+    }
+    else {
+        $("#autoplaySeconds").hide();
+        $("#autoplayRemainingTime").hide();
+    }
     if (quizVars.autoplayInterval > 0) {
         clearInterval(quizVars.autoplayInterval);
         quizVars.autoplayInterval = -1;
@@ -102,9 +120,16 @@ const autoplay = () => {
         $("#btn_backward").prop("disabled", true);
         $("#btn_replay").prop("disabled", true);
         $("#btn_forward").prop("disabled", true);
+        $("#autoplayRemainingTime").html("(" + quizVars.autoplayNumSeconds + "s remaining)");
         quizVars.autoplayInterval = setInterval(() => {
-            play(quizConstants.FORWARD);
-        }, quizVars.autoplayNumSeconds * 1000)
+            quizVars.autoplayRemainingTime--;
+            if (quizVars.autoplayRemainingTime == 0) {
+                $("#autoplayRemainingTime").html("");
+                quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
+                play(quizVars.FORWARD);
+            }
+            $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
+        }, 1000)
     }
 }
 
@@ -165,15 +190,15 @@ const resetPlayingQuestion = () => {
 }
 
 const setNewQuestion = (direction) => {
-    if (direction == quizConstants.BACKWARD){
+    if (direction == quizConstants.BACKWARD) {
         // we re-mix the list of question again
-        if(quizVars.playingIndex==0)
+        if (quizVars.playingIndex == 0)
             quizVars.randList = getRandListWithSize(quizVars.indexList.length);
         quizVars.playingIndex = ((quizVars.playingIndex - 1) + quizVars.randList.length) % quizVars.randList.length
     }
-    else if (direction == quizConstants.FORWARD){
+    else if (direction == quizConstants.FORWARD) {
         // we re-mix the list of question again
-        if(quizVars.playingIndex == (quizVars.randList.length-1))
+        if (quizVars.playingIndex == (quizVars.randList.length - 1))
             quizVars.randList = getRandListWithSize(quizVars.indexList.length);
         quizVars.playingIndex = ((quizVars.playingIndex + 1) % quizVars.randList.length)
     }
