@@ -53,6 +53,7 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 
 ### Execution with "Autoplay" Mode
 We could select the delay (which will be recorded locally and will be used again for next execution...)
+
 ![alt text](assets/img/execution.jpg)
 
 ---------------
