@@ -43,23 +43,32 @@ const showQuestionNP_Ans = () => {
         display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
     $("#questionDiv").html("<br/>" + display);
     if (playingQuestion.question.pA.length > 0) {
-        display = "<table>"
+        display = "<table style='width:100%'>"
         for (let i = 0; i < playingQuestion.question.pA.length; i++) {
             // a proposed answer with/without image
             let pa = "";
-            if (playingQuestion.question.pA[i].txt.length)
-                pa = "<span id='pa" + i + "'>" + playingQuestion.question.pA[i].txt + "</span>";
-            if (playingQuestion.question.pA[i].img.length)
-                pa += "<p align='center'><img src='" + playingQuestion.question.pA[i].img + "' border='1' /></p>";
-
-            display += "<tr><td style='padding: 5px; vertical-align:top'><input type='checkbox' id='myCB" + i +
-                "' onclick=selectPA_num(myCB" + i + ") value=" + i +
-                "></td><td class='propAns'>" + pa + "</td><tr>";
+            if (playingQuestion.question.pA.length == 1)
+                pa = "<div id='pa" + i + "' class='propAns' hidden='hidden'></div>";
+            else {
+                if (playingQuestion.question.pA[i].txt.length)
+                    pa = "<div id='pa" + i + "'>" + playingQuestion.question.pA[i].txt + "</div>";
+                if (playingQuestion.question.pA[i].img.length)
+                    pa += "<p align='center'><img src='" + playingQuestion.question.pA[i].img + "' border='1' /></p>";
+            }
+            if (playingQuestion.question.pA.length > 1)
+                display += "<tr><td style='padding: 5px; vertical-align:top'><input type='checkbox' id='myCB" + i +
+                    "' onclick=selectPA_num(myCB" + i + ") value=" + i +
+                    "></td><td id='tdPATxt " + i + "' class='propAns'>" + pa + "</td><tr>";
+            else if (playingQuestion.question.pA.length == 1)
+                display += "<tr><td id='tdPATxt" + i + "' colspan='2' hidden='hidden'>" + pa + "</td><tr>";
         }
         display += "</table>"
-        $("#propAnsDiv").html("<hr/><div class='question'><b><u>Proposed Answer(s):</u></b> " +
-            "<span id='autoplayRemainingTime'></span></div>" +
-            display);
+        if (playingQuestion.question.pA.length > 1)
+            $("#propAnsDiv").html("<br/><div class='question'><b><u>Proposed Answer(s):</u></b> " +
+                "<span id='autoplayRemainingTime'></span></div>" +
+                display);
+        else
+            $("#propAnsDiv").html("<br/>" + display);
     }
     else // If we don't have proposed answer for this question, we need to clear the previous ones
         $("#propAnsDiv").html();
@@ -67,13 +76,24 @@ const showQuestionNP_Ans = () => {
 
 const showCheckedAnswer = () => {
     for (let i = 0; i < playingQuestion.question.pA.length; i++) {
-        $("#myCB" + i).prop("disabled", true);
         const ans = playingQuestion.question.pA[i];
-        if (ans.isGood)
-            $("#pa" + i).html("<font color='green'><b>" + ans.txt + "</b></font>");
+        if (playingQuestion.question.pA.length > 1) {
+            $("#myCB" + i).prop("disabled", true);
+            if (ans.isGood)
+                $("#pa" + i).html("<font color='green'><b>" + ans.txt + "</b></font>");
+            else {
+                if (ans.isSelected)
+                    $("#pa" + i).html("<font color='red'><b><del>" + ans.txt + "</del></b></font>");
+                else
+                    $("#pa" + i).html(ans.txt);
+            }
+        }
         else {
-            if (ans.isSelected)
-                $("#pa" + i).html("<font color='red'><b><del>" + ans.txt + "</del></b></font>");
+            $("#pa" + i).show();
+            $("#tdPATxt" + i).show();
+            if (playingQuestion.question.pA[0].img.length > 0)
+                $("#pa" + i).html(ans.txt + "<p align='center'><img src='" +
+                    playingQuestion.question.pA[0].img + "' border='1' /></p>");
             else
                 $("#pa" + i).html(ans.txt);
         }
@@ -225,12 +245,20 @@ const setNewQuestion = (direction) => {
     playingQuestion.comment = quiz.comment;
     playingQuestion.ref = quiz.ref;
     playingQuestion.isAnswersChecked = ques.p_ans.length > 0 ? false : true;
+    let pa_tempo = [];
+
+    if (ques.p_ans.length == 0)
+        pa_tempo = [];
+    else if (ques.p_ans.length == 1)
+        pa_tempo.push(ques.p_ans[0]);
+    else pa_tempo = mixPA(ques.p_ans);
+
     playingQuestion.question = {
         txt: ques.txt,
         img: ques.img,
         subject: ques.subject,
         ref: ques.ref,
-        pA: ques.p_ans.length > 0 ? mixPA(ques.p_ans) : []
+        pA: pa_tempo
     };
     if (quizVars.autoplayInterval < 1) {
         if (ques.p_ans.length == 0) // no proposed answers --> No REPLAY
