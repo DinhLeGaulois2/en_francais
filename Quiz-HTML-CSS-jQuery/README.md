@@ -52,7 +52,7 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 > Click on **myQuiz.html** (you could rename it)
 
 ### Execution with "Autoplay" Mode
-We could select the delay (which will be recorded locally and will be used again - as long as we don't set a new value - again for next executions...)
+We could select the delay (which will be recorded locally and will be used again - as long as we don't set a new value - for next executions...)
 
 ![alt text](assets/img/execution.jpg)
 
