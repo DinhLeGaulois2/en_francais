@@ -51,6 +51,8 @@ const playingQuizzes = [ // we could put several quizzes in this Array ...
 ## Execution
 > Click on **myQuiz.html** (you could rename it)
 
+![alt text](assets/img/execution.jpg)
+
 ---------------
 
 ## Author
