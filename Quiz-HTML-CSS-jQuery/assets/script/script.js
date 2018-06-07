@@ -37,7 +37,7 @@ const showQuestionNP_Ans = () => {
         display = "<div class='question' style='text-align:center'>" + playingQuestion.question.txt + "</div>";
     if (playingQuestion.question.img.length)
         display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
-    $("#questionDiv").html("<br/>" + display + "<hr/>");
+    $("#questionDiv").html("<br/>" + display);
     if (playingQuestion.question.pA.length > 0) {
         display = "<table>"
         for (let i = 0; i < playingQuestion.question.pA.length; i++) {
@@ -53,7 +53,7 @@ const showQuestionNP_Ans = () => {
                 "></td><td class='propAns'>" + pa + "</td><tr>";
         }
         display += "</table>"
-        $("#propAnsDiv").html("<div class='question'><b><u>Proposed Answer(s):</u></b> " +
+        $("#propAnsDiv").html("<hr/><div class='question'><b><u>Proposed Answer(s):</u></b> " +
             "<span id='autoplayRemainingTime'></span></div>" +
             display);
     }
@@ -81,19 +81,25 @@ const initAutoplayDelay = (num_seconds) => {
     quizVars.autoplayRemainingTime = num_seconds;
 }
 
+const isPAExist = () => {
+    return playingQuestion.question.pA.length > 0;
+}
+
 const setAutoplayTime = (num_seconds) => {
     quizVars.autoplayNumSeconds = num_seconds;
     quizVars.autoplayRemainingTime = num_seconds;
     clearInterval(quizVars.autoplayInterval);
-    $("#autoplayRemainingTime").html("(" + num_seconds + "s remaining)");
+    if (isPAExist()) $("#autoplayRemainingTime").html("(" + num_seconds + "s remaining)");
     quizVars.autoplayInterval = setInterval(() => {
         quizVars.autoplayRemainingTime--;
         if (quizVars.autoplayRemainingTime == 0) {
-            $("#autoplayRemainingTime").html("");
-            quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
+            if (isPAExist()) {
+                $("#autoplayRemainingTime").html("");
+                quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
+            }
             play(quizVars.lastPlayingType);
         }
-        $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
+        if (isPAExist()) $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
     }, 1000)
 }
 
@@ -103,11 +109,11 @@ const autoplay = () => {
     $("#autoplayRemainingTime").show();
     if (quizVars.isAutoplay) {
         $("#autoplaySeconds").show();
-        $("#autoplayRemainingTime").show();
+        if (isPAExist()) $("#autoplayRemainingTime").show();
     }
     else {
         $("#autoplaySeconds").hide();
-        $("#autoplayRemainingTime").hide();
+        if (isPAExist()) $("#autoplayRemainingTime").hide();
     }
     if (quizVars.autoplayInterval > 0) {
         clearInterval(quizVars.autoplayInterval);
@@ -120,15 +126,16 @@ const autoplay = () => {
         $("#btn_backward").prop("disabled", true);
         $("#btn_replay").prop("disabled", true);
         $("#btn_forward").prop("disabled", true);
-        $("#autoplayRemainingTime").html("(" + quizVars.autoplayNumSeconds + "s remaining)");
+        if (isPAExist()) $("#autoplayRemainingTime").html("(" + quizVars.autoplayNumSeconds + "s remaining)");
         quizVars.autoplayInterval = setInterval(() => {
             quizVars.autoplayRemainingTime--;
             if (quizVars.autoplayRemainingTime == 0) {
-                $("#autoplayRemainingTime").html("");
+                if (isPAExist()) 
+                    $("#autoplayRemainingTime").html("");
                 quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
-                play(quizVars.FORWARD);
+                play(quizConstants.FORWARD);
             }
-            $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
+            if (isPAExist()) $("#autoplayRemainingTime").html("(" + quizVars.autoplayRemainingTime + "s remaining)");
         }, 1000)
     }
 }
