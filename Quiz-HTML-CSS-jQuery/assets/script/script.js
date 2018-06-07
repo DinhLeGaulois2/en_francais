@@ -165,10 +165,18 @@ const resetPlayingQuestion = () => {
 }
 
 const setNewQuestion = (direction) => {
-    if (direction == quizConstants.BACKWARD)
+    if (direction == quizConstants.BACKWARD){
+        // we re-mix the list of question again
+        if(quizVars.playingIndex==0)
+            quizVars.randList = getRandListWithSize(quizVars.indexList.length);
         quizVars.playingIndex = ((quizVars.playingIndex - 1) + quizVars.randList.length) % quizVars.randList.length
-    else if (direction == quizConstants.FORWARD)
+    }
+    else if (direction == quizConstants.FORWARD){
+        // we re-mix the list of question again
+        if(quizVars.playingIndex == (quizVars.randList.length-1))
+            quizVars.randList = getRandListWithSize(quizVars.indexList.length);
         quizVars.playingIndex = ((quizVars.playingIndex + 1) % quizVars.randList.length)
+    }
     let o = quizVars.indexList[quizVars.randList[quizVars.playingIndex]];
     const quizIndex = o.quiz_num;
     const questionNumber = o.question_num;
