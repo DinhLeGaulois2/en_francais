@@ -73,6 +73,10 @@ const showCheckedAnswer = () => {
     }
 }
 
+const initAutoplayDelay = (num_seconds) => {    
+    quizVars.autoplayNumSeconds = num_seconds;   
+}
+
 const setAutoplayTime = (num_seconds) => {
     quizVars.autoplayNumSeconds = num_seconds;    
     clearInterval(quizVars.autoplayInterval);

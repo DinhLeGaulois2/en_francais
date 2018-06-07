@@ -22,7 +22,6 @@
             <div class="row" style="font-size:1.5em">
                 <!-- #3679b6 -->
                 <select name="autoplaySeconds" id="autoplaySeconds" style="color:#00ff00; background-color:gray;" hidden="hidden">
-                    <option value=5 selected>Delay (5 s)</option>
                     <option value=1>Delay (1s)</option>
                     <option value=2>Delay (2s)</option>
                     <option value=3>Delay (3s)</option>
@@ -74,9 +73,15 @@
         // A $( document ).ready() block.
         $(document).ready(function () {
             if (localStorage.getItem("autoplayDelay") === null) {
-                setAutoplayTime($('#autoplaySeconds').find(":selected").val());
-                $("#autoplaySeconds").hide();
+                initAutoplayDelay($('#autoplaySeconds').find(":selected").val());
+                $("#autoplaySeconds").hide();                           
+                $("#autoplaySeconds option[value=5]").prop('selected', true);
             }
+            else{
+                const num_seconds = localStorage.getItem("autoplayDelay");
+                initAutoplayDelay(num_seconds);                                                      
+                $("#autoplaySeconds option[value=" + num_seconds + "]").prop('selected', true);
+            } 
         });
 
         // First time...
