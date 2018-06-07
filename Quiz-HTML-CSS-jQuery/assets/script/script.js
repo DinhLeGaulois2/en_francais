@@ -33,8 +33,12 @@ const selectAPA = (num, val) => {
 const showQuestionNP_Ans = () => {
     let display = "";
     $("#titleDiv").html("<div class='title'><font ='cyan'>" + playingQuestion.quizTitle + "</font></div>");
-    if (playingQuestion.question.txt.length)
-        display = "<div class='question' style='text-align:center'>" + playingQuestion.question.txt + "</div>";
+    if (playingQuestion.question.txt.length) {
+        if (isPAExist())
+            display = "<div class='question' style='text-align:center'>" + playingQuestion.question.txt + "</div>";
+        else
+            display = "<div class='question' style='text-align:center; font-size: 3em'>" + playingQuestion.question.txt + "</div>";
+    }
     if (playingQuestion.question.img.length)
         display += "<p align='center'><img src='" + playingQuestion.question.img + " border='1'/></p>";
     $("#questionDiv").html("<br/>" + display);
@@ -130,7 +134,7 @@ const autoplay = () => {
         quizVars.autoplayInterval = setInterval(() => {
             quizVars.autoplayRemainingTime--;
             if (quizVars.autoplayRemainingTime == 0) {
-                if (isPAExist()) 
+                if (isPAExist())
                     $("#autoplayRemainingTime").html("");
                 quizVars.autoplayRemainingTime = quizVars.autoplayNumSeconds;
                 play(quizConstants.FORWARD);
