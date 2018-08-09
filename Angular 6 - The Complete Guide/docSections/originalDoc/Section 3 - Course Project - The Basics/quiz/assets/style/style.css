@@ -1,0 +1,57 @@
+body {
+	background-color: black;
+	color: cyan;
+}
+
+.container {
+	width: 95%;
+}
+
+.title {
+	background-color: #bcbdbe;
+	color:black;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.2em;
+	padding: 5px auto;
+	width: 100%;
+}
+
+.navBar {
+	position: fixed;
+	bottom: 0;
+	width: 93%;
+}
+
+.propAns, .question {
+	background-color: #abdef9;
+	color: black;
+	border-radius: 5px;
+	width: 100%;
+	padding: 5px;
+	margin: 5px;
+	font-size: 2em;
+}
+
+.quizRef{
+	background-color: white;
+	color: black;
+	font-size: 1.2em;
+	padding: 5px;
+	margin: 5px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+input[type="checkbox"] {
+	width: 2em;
+	height: 2em;
+	padding: 10px;
+}
+
+.myCode{
+	background-color: black; 
+	color: white; 
+	font-style: italic; 
+	font-size: 1em;
+}

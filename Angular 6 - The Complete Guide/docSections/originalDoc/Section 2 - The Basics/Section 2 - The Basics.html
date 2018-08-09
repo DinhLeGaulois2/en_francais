@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Basics</title>
+    <link rel="stylesheet" type="text/css" href="../../../assets/style/mystyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- table of content -->
+        <div>
+            <h1 align="center" style="color:red; padding:10px 50px; background-color: white">Section 2 - The Basics</h1>
+            <h3 align="center" style="color:cyan; padding:10px 50px; background-color: gray" id="tableOfContent">Table of Content</h3>
+            <table align="center" style="border:2px solid ">
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Module Introduction">12. Module Introduction</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#How an Angular App gets Loaded and Started">13. How an Angular App gets Loaded and Started</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Components are Important!">14. Components are Important!</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Creating a New Component">15. Creating a New Component</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Understanding the Role of AppModule and Component Declaration">16. Understanding the Role of AppModule and Component Declaration</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Using Custom Components">17. Using Custom Components</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Creating Components with the CLI & Nesting Components">18. Creating Components with the CLI & Nesting Components</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Working with Component Templates">19. Working with Component Templates</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Working with Component Styles">20. Working with Component Styles</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Fully Understanding the Component Selector">21. Fully Understanding the Component Selector</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#What is Databinding?">22. What is Databinding?</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#String Interpolation">23. String Interpolation</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Property Binding">24. Property Binding</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Property Binding vs String Interpolation">25. Property Binding vs String Interpolation</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Event Binding">26. Event Binding</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Bindable Properties and Events">27. Bindable Properties and Events</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Passing and Using Data with Event Binding">28. Passing and Using Data with Event Binding</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Important: FormsModule is Required for Two-Way-Binding!">29. Important: FormsModule is Required for Two-Way-Binding!</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Two-Way-Databinding">30. Two-Way-Databinding</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Combining all Forms of Databinding">31. Combining all Forms of Databinding</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Understanding Directives">32. Understanding Directives</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Using ngIf to Output Data Conditionally">33. Using ngIf to Output Data Conditionally</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Enhancing ngIf with an Else Condition">34. Enhancing ngIf with an Else Condition</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Styling Elements Dynamically with ngStyle">35. Styling Elements Dynamically with ngStyle</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Applying CSS Classes Dynamically with ngClass">36. Applying CSS Classes Dynamically with ngClass</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Outputting Lists with ngFor">37. Outputting Lists with ngFor</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><a href="#Getting the Index when using ngFor">38. Getting the Index when using ngFor</a></td></tr>
+                <tr><td style="padding: 10px; font-size:1.2em"><hr/><p align='center'><a href="quiz/chapterQuiz.html" target='_blank'>Quiz</a></p></td></tr>
+            </table>
+        </div>
+        <hr/>
+
+        <!-- =================================================================== -->		<div class="panel-heading">
+			<h1 align="center" id="Module Introduction">12. Module Introduction</h1>
+		</div>
+		<div class="panel-body">
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="How an Angular App gets Loaded and Started">13. How an Angular App gets Loaded and Started</h1>
+		</div>
+		<div class="panel-body">
+			<p>The first thing is loaded by Angular would be "<b>src/main.js</b>".</p>
+			<p align="center"><img src="data/img/13.jpg" border="1" /></p>
+			<p>For now, we have just one component ("<b>app.component</b>") which has a <font color="yellow" size="+2"><b>selector</b></font> named "<b><font color="red" size="+2">app-root</font></b>". And precisely that the latter is used in "<b>src/index.html</b>" as the starting point of our application:</p>
+			<pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;MyFirstApp&lt;/title&gt;
+	&lt;base href="/"&gt;
+
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+	&lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	<b><font color="red" size="+3">&lt;app-root&gt;&lt;/app-root&gt;</font></b>
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Components are Important!">14. Components are Important!</h1>
+		</div>
+		<div class="panel-body">
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Creating a New Component">15. Creating a New Component</h1>
+		</div>
+		<div class="panel-body">
+			<h3>To create a new component (in this example, it will be "<b><font color='yellow' size=='+2'>server</font></b>"), we do:</h3>
+			<div class="def"><p align="center"><b><font color='yellow' size=='+2'>server</font></b>.component.<font color="red" size="+2"><b>ts</b></font></p></div>
+			<p><b><u>Note:</u></b> the "<b>.component.</b>" is optional but it would help to know that's a <b>COMPONENT</b> (and NOT a "<b>service</b>" for example).</p>
+			<div class="def"><font color='red'><b><u>Attention:</u></b></font> right now, Angular doesn't know the existence of our new component ("<b>app.server.ts</b>"). We need to
+				"record" it somehow...
+			</div>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Understanding the Role of AppModule and Component Declaration">16. Understanding the Role of AppModule and Component Declaration</h1>
+		</div>
+		<div class="panel-body">
+			<p align="center"><img src="data/img/16.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Using Custom Components">17. Using Custom Components</h1>
+		</div>
+		<div class="panel-body">
+				<p>To be able to used our new component "<font color="red" size="+2"><b>app-server</b></font>" (which is the <font color="blue" size="+2"><u>selector</u></font> of the component) in our "<b>app.component.html</b>", we could write:</p>
+				<pre class="code"><code>&lt;h3&gt;I'm in the AppComponent!&lt;/h3&gt;
+&lt;hr&gt;
+<font color="red" size="+3"><b>&lt;app-server&gt;&lt;/app-server&gt;</b></font></code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Creating Components with the CLI & Nesting Components">18. Creating Components with the CLI & Nesting Components</h1>
+		</div>
+		<div class="panel-body">
+			<p>We open a new "<b>terminal</b>" (let the one executing "<b>ng serve</b>" running):</p>
+			<!-- Add Definition -->
+			<div class="def"><h3 align='center'><font color='red'>ng generate component</font> <font color="yellow">servers</font></h3>
+				<p>Or, with shorter writting code:</p>
+				<h3 align='center'><font color='red'>ng g c</font> <font color="yellow">servers</font></h3>
+			</div>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Working with Component Templates">19. Working with Component Templates</h1>
+		</div>
+		<div class="panel-body">
+			<p>Difference between "<font size="+2"><b>external</b></font>" file and "<font size="+2"><b>inline</b></font>" code for a <b>component</b>'s <font color="red" size="+2"><b>Template</b></font>:</p> 
+			<p align="center"><img src="data/img/19.jpg" border="1" /></p>
+
+			<h3>How to write SEVERAL lines in mode "<font size="+2"><b>inline</b></font>" of our <b>template</b>? Answers</h3>
+			<pre class="code"><code>template: <font color="red" size="+4">`</font>
+	// line1
+	// line2
+	// more lines...
+<font color="red" size="+4">`</font></code></pre>
+			<!-- Add a Picture -->
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Working with Component Styles">20. Working with Component Styles</h1>
+		</div>
+		<div class="panel-body">
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Fully Understanding the Component Selector">21. Fully Understanding the Component Selector</h1>
+		</div>
+		<div class="panel-body">
+			<h3>A <b>component</b> is not ONLY a <b>component</b> but also be an "<font color="red" size="+2">attribute</font>" (good to create "<b><font color="blue" size="+2">directives</font></b>"):</h3>
+			<pre class="code"><code>@Component({
+   selector: '<font color="red" size="+2">[</font><font color="yellow" size="+2">app-own-component</font><font color="red" size="+2">]</font>',
+   ...
+})
+
+//----------------------
+
+// Usage (in a template)
+// Inside a regular HTML tag, we could do, for example with a 'div':
+&lt;div <font color="yellow" size="+2">app-own-component</font>&gt;&lt;/div&gt;</code></pre>
+
+			<h3>Or also be an "<font color="red" size="+2">class</font>":</h3>
+<pre class="code"><code>@Component({
+   selector: '<font color="red" size="+2">.</font><font color="yellow" size="+2">app-own-component</font>',
+   ...
+})
+
+//----------------------
+
+// Usage (in a template)
+// Inside a regular HTML tag, we could do, for example with a 'div':
+&lt;div <font color="red" size="+2">class</font>="<font color="yellow" size="+2">app-own-component</font>"&gt;&lt;/div&gt;</code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="What is Databinding?">22. What is Databinding?</h1>
+		</div>
+		<div class="panel-body">
+			<p align="center"><img src="data/img/22.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="String Interpolation">23. String Interpolation</h1>
+		</div>
+		<div class="panel-body">
+			<p>Using "<b>variables</b>" directly:</p>
+			<p align="center"><img src="data/img/23.jpg" border="1" /></p>
+			<p>Or by calling a function:</p>
+			<p align="center"><img src="data/img/23_bis.jpg" border="1" /></p>
+			<p>We get the same result in both cases...</p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Property Binding">24. Property Binding</h1>
+		</div>
+		<div class="panel-body">
+			<p>Let say that we have a variable "<b>allowNewServer</b>" ("<b>servers/servers.component<font color="red" size="+2">.ts</font></b>") which have the initial value of "<b>false</b>" but it will be "<b>true</b>" after 2 seconds:</p>
+			<pre class="code"><code>import { Component, OnInit } from '@angular/core';
+
+@Component({
+   selector: 'app-servers',
+   templateUrl: './servers.component.html',
+   styleUrls: ['./servers.component.css']
+})
+export class ServersComponent implements OnInit {
+   <font color="yellow" size="+2">allowNewServer</font> = false;
+
+   constructor() { 
+      setTimeout(() =&gt; {
+         this.<font color="yellow" size="+2">allowNewServer</font> = true;
+      },2000);
+   }
+
+   ngOnInit() {
+   }
+}</code></pre>
+			<p>And we have ("<b>servers/servers.component<font color="red">.html</font></b>") a button. How could we use the <font color="yellow" size="+2">allowNewServer</font> to disable/enable the button?</p>
+			<p><b><u>Solution:</u></b> by using the <i>property binding</i> with <font color="red"><b>[</b></font> and <font color="red"><b>]</b></font> like below:</p>
+			<pre class="code"><code>&lt;button class="btn btn-primary" <font color="red"><b>[</b></font>disabled<font color="red"><b>]</b></font>="<font color="yellow" size="+2">allowNewServer</font>"&gt;Add Server&lt;/button&gt;</code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Property Binding vs String Interpolation">25. Property Binding vs String Interpolation</h1>
+		</div>
+		<div class="panel-body">
+			<p>We could get the CONTENT of a property:</p>
+			<div class="def"><p align='center'>&lt;p <font color="red"><b>[</b></font><font color='cyan' size='+2'>innerText</font><font color="red"><b>]</b></font>=&quot;allowNewServer&quot;&gt;&lt;/p&gt;</p></div>
+			<p>Here, we're displaying the value of "<font size="+2">allowNewServer</font>" (equivalent to: <b><i>&lt;p&gt;{{ allowNewServer }}&lt;/p&gt;</i></b>).</p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Event Binding">26. Event Binding</h1>
+		</div>
+		<div class="panel-body">
+			<p align="center"><img src="data/img/26.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Bindable Properties and Events">27. Bindable Properties and Events</h1>
+		</div>
+		<div class="panel-body">
+			<!-- Add Definition -->
+			<div class="def">
+				<p>How do you know to which Properties or Events of HTML Elements you may bind? You can basically bind to all Properties and Events - a good idea is to <font color="red">console.log()</font>  the element you're interested in to see which properties and events it offers.</p>
+
+				<p>Important: For events, you don't bind to onclick but only to click (=> (click)).</p>
+			
+				<p>The MDN (Mozilla Developer Network) offers nice lists of all properties and events of the element you're interested in. Googling for <font color="red">YOUR_ELEMENT properties</font>  or <font color="red">YOUR_ELEMENT events</font>  should yield nice results.</p>
+			</div>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Passing and Using Data with Event Binding">28. Passing and Using Data with Event Binding</h1>
+		</div>
+		<div class="panel-body">
+			<h3>"<font color="blue">input</font>" and "<font color="blue">$event</font>" are <b>reserved</b> words!</h3>
+			<p align="center"><img src="data/img/28.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Important: FormsModule is Required for Two-Way-Binding!">29. Important: FormsModule is Required for Two-Way-Binding!</h1>
+		</div>
+		<div class="panel-body">
+			<p><b><u>Step 1:</u></b> What do we need to do to be able to use the directive "<font color="red" size="+2">[(ngModel)]</font>"? Answer: we need to <b><u>declare</u></b> it:</p>
+			<p align="center"><img src="data/img/29.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Two-Way-Databinding">30. Two-Way-Databinding</h1>
+		</div>
+		<div class="panel-body">
+			<p><b><u>Step 2:</u></b> Now, we could use "<b>Two-Way-Binding</b>":</p>
+			<p align="center"><img src="data/img/30.jpg" border="1" /></p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Combining all Forms of Databinding">31. Combining all Forms of Databinding</h1>
+		</div>
+		<div class="panel-body">
+			<p align="center"><img src="data/img/31.jpg" border="1" /></p>
+			<p>How it works?</p>
+			<ul>
+				<li><b><u>Event Binding:</u></b> for every character entered in the input, the function "<b>onUpdateServerName</b>" is called and the "<b>serverName</b>" 
+					is updated to the value of the input's field. So the value showed is changed (with <font color="blue">{{ <b>serverName</b> }}</font>). As the lower "<b>input</b>"
+					is binded by "<b>Two-Way-Binding</b>" with "<b>serverName</b>", the value showed in its field is updated as well.
+				</li>
+				<li><b><u>Two-Way-Binding:</u></b> when we enter something on the lower input, the value to display (with <font color="blue">{{ <b>serverName</b> }}</font>) is 
+					updating but nothing happens to the upper input. Why? Because data is sent only when the user enters something but the "input" receives nothing from the outside.
+				</li>
+			</ul>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Understanding Directives">32. Understanding Directives</h1>
+		</div>
+		<div class="panel-body">
+			<!-- Add Definition -->
+			<div class="def">Directives are Instructions in the DOM. The three types of directives in Angular 2 are:
+				<ul>
+					<li><font color='yellow' size='+2'>attribute directives</font></li>
+					<li><font color='yellow' size='+2'>structural directives</font></li>
+					<li><font color='yellow' size='+2'>components</font> (directives with template)</li>
+				</ul>
+			</div>
+			<h3>Example of directives:</h3>
+			<ul>
+				<li><b>ngIf</b></li>
+				<li><b>ng-list</b></li>
+				<li><b>ng-model</b></li>
+			</ul>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Using ngIf to Output Data Conditionally">33. Using ngIf to Output Data Conditionally</h1>
+		</div>
+		<div class="panel-body">
+			<!-- Add Definition -->
+			<div class="def">Example: <p align='center'>&lt;p <font color='red' size='+3'>*ngIf</font>=&quot;<font color='yellow' size='+3'>my_condition_boolean</font>&quot;&gt;Show Result&lt;/p&gt;</p></div>
+			<p>The result will be showed ONLY when <font color='yellow' size='+2'>my_condition_boolean</font> is "<b>true</b>".</p>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Enhancing ngIf with an Else Condition">34. Enhancing ngIf with an Else Condition</h1>
+		</div>
+		<div class="panel-body">
+			<p>We could create a "<b>local reference</b>", for example: <font color='yellow' size='+2'>#</font><font color='blue' size='+2'>noServer</font> using "<font color='#d49243' size='+2'>ng-template</font>" as follow:</p>
+			<pre class="code"><code>&lt;<font color='#d49243' size='+2'>ng-template</font> <font color='yellow' size='+2'>#</font><font color='blue' size='+2'>noServer</font>&gt;
+   No Server was created!
+&lt;/<font color='#d49243' size='+2'>ng-template</font>&gt;</code></pre>
+			<h3>Let do <font color="red">IF</font> and <font color="red">ELSE</font></h3>
+			<pre class="code"><code>&lt;p <font color='red' size='+3'>*ngIf</font>=&quot;serverCreated<font color='magenta' size='+2'>;</font> <font color="red" size="+2">else</font> <font color='blue' size='+2'>noServer</font>&quot;&gt;Server was created, server name is {{ serverName }}&lt;/p&gt;
+&lt;<font color='#d49243' size='+2'>ng-template</font> <font color='yellow' size='+2'>#</font><font color='blue' size='+2'>noServer</font>&gt; &nbsp;&nbsp;&nbsp;&nbsp;// &lt;====== Don't forget the <font color='yellow' size='+2'>#</font>
+   No Server was created!
+&lt;/<font color='#d49243' size='+2'>ng-template</font>&gt;</code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Styling Elements Dynamically with ngStyle">35. Styling Elements Dynamically with ngStyle</h1>
+		</div>
+		<div class="panel-body">
+			<div class="def">Syntax:<p align='center'>&lt;p <font color='red' size='+2'>[ngStyle]</font>=&quot;{ backgroundColor: getColor() }&quot;&gt;Hello&lt;/p&gt;</p></div>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Applying CSS Classes Dynamically with ngClass">36. Applying CSS Classes Dynamically with ngClass</h1>
+		</div>
+		<div class="panel-body">
+			<p>We could activate a class ("<b>.myClass</b>") under condition. For example, the class "<b>onlineStyling</b>" is activated only the value of <b>serverStatus</b> is 'online':</p>
+			<!-- Add Definition -->
+			<div class="def"></div>
+			<!-- Add Code -->
+			<pre class="code"><code>&lt;p
+   [ngStyle] = "{backgroundcolor: getColor()}"
+   <font color='red' size='+2'>[ngClass]</font>=&quot;{ onlineStyling: serverStatus === 'online'}&quot;
+&gt;
+   {{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }}
+&lt;/p&gt;</code></pre>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Outputting Lists with ngFor">37. Outputting Lists with ngFor</h1>
+		</div>
+		<div class="panel-body">
+			<p>What is the syntax of <b><font color='yellow'><b style='background-color: black; padding: 5px'>ngFor</b></font></b>?</p>
+			<div class="def"><p align='center'>&lt;div <font color='red'>*</font><font color='yellow' size='+2'>ngFor</font>=&quot;<font color='red'>let</font> aUnit <font color='red'>of</font> list&quot;&gt; {{ aUnit }}&lt;/div&gt;</p></div>
+		</div>
+
+		<!-- =================================================================== -->
+		<div class="panel-heading">
+			<h1 align="center" id="Getting the Index when using ngFor">38. Getting the Index when using ngFor</h1>
+		</div>
+		<div class="panel-body">
+			<div class="def"><p align='center'>&lt;div <b>*ngFor</b>=&quot;<b>let</b> aUnit <b>of</b> list <font color='red'>; let</font> i = <font color='red'>index</font>&quot;&gt; {{ aUnit }} number {{ i }}&lt;/div&gt;</p></div>
+		</div>
+
+		<!-- =================================================================== -->
+    </div>
+</body>
+
+</html>

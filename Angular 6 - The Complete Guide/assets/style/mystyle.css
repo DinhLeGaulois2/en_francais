@@ -1,0 +1,73 @@
+body {
+    background-color: black;
+    color: #2bb4fb;
+    font-size: 1.2em;
+}
+
+td, th {
+    padding: 10px;
+}
+
+.part, .partChap {
+    background-color: black;
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.def > a{
+    color: #00ff00;
+}
+
+.part {
+    color: cyan;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.partChap {
+    color: orange;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.code, .def{
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.def {
+    background-color: #2c2d19;
+    color: white;
+    font-size: 1.5em;
+}
+
+.code {
+    background-color: #355367;
+    color: white;
+    font-size: 1.5em;
+}
+
+.mainPoint {
+    font-weight: bold;
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+.panel {
+    margin: 20px;
+}
+
+.panel-body {
+    background-color: #abdef9;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+}
