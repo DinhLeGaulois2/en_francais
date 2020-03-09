@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation and Configuration</title>
+
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+</head>
+
+<body>
+    <p align="center">[<a href="https://www.youtube.com/watch?v=deyxI-6C2u4">Source</a> (Youtube)]</p>
+    <h1 align="center" class="title">Installation and Configuration</h1>
+    <h3 align="center">[<a href="../../../index.html">Home</a>]</h3>
+    <hr/>
+    <div class="my-note">
+        <ol type="1">
+            <li>
+                <h3>Create the "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/package.json" target='_blank'>package.json</a></b>"</h3>
+                <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm init -y</p>
+            </li>
+            <li>
+                <h3>To be able to use "<b>React</b>" we need to install "<b>react</b>" and "<b>react-dom</b>"</h3>
+                <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i react react-dom</p>
+            </li>
+            <li>
+                <h3>To be able to use "<b>webpack</b>" and a <b>dev server</b></h3>
+                <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i --save-dev webpack webpack-dev-server webpack-cli
+                </p>
+            </li>
+            <li>
+                <h3>Install "<b>Babel</b>"</h3>
+                <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev</p>
+            </li>
+            <li>
+                <h3>Create "<b>.babelrc</b>" ("<b>src/.babelrc</b>") with</h3>
+                <pre class="my-note" style="background-color: black; color: cyan"><code>{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+}</code></pre>
+            </li>
+            <li>
+                <h3>Install "<b>SASS</b>"</h3>
+                <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm install node-sass css-loader sass-loader style-loader --save-dev</p>
+            </li>
+            <li>
+                <h3>Create (at the root of the project) the "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"</h3>
+<pre class="my-note" style="background-color: black; color: green"><code>const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    entry: './src/<font color="yellow"><b>index.js</b></font>', // we need to create the 'src' folder and the file 'index.js'
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: '<font color="yellow"><b>index_bundle.js</b></font>'
+    },
+    module: {
+        rules: [
+            { // for "Babel"
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            { // for "SASS"
+                test: /\.(s*)css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+        ]
+    },
+    plugin: [
+        new HtmlWebpackPlugin({
+            template: './src/<font color="yellow"><b>index.html</b></font>'  // to create the "index.html" file AUTOMATICALLY for us
+        })
+    ]
+}</code></pre>
+            </li>
+            <li>
+                <h3>Scripts for "<b>SASS</b>" compilation (in <a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/package.json" target='_blank'>package.json</a>)</h3>
+                <pre class="my-note" style="background-color: black; color: green"><code>"scripts": {<font color="yellow">
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production"</font>
+},</code></pre>
+            </li>
+            <li><h3>Result:</h3>
+                <table border="1" align="center">
+                    <tr>
+                        <td><img src="../How it works/img/global_view.jpg"/></td>
+                        <td valign="top" style="font-size: 1.5rem; padding: 10px">
+                            <div><font color="red"><b>1</b></font>: "dist" is created when ("<b>production</b>" mode):
+                                <p class="my-note" style="background-color: black; color: green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm run build</p>
+                                <br/>
+                            </div>
+                            <div><font color="red"><b>2</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/components/App.js" target="_blank"><b>App.js</b></a>", a <i>React</i> component<br/></div>
+                            <div><font color="red"><b>3</b></font>: "<b>index.html</b>", used in "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"<br/> needs it (see "<b>plugins</b>")...<br/></div>
+                            <div><font color="red"><b>4</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/index.js" target="_blank"><b>index.js</b></a>", the "<b>entry</b>" of "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"<br/></div>
+                            <div><font color="red"><b>5</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/package.json" target="_blank">package.json</a>"<br/></div>
+                            <div><font color="red"><b>6</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a>"</div>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ol>
+        <br/>
+        <h3 align="center" class="my-note">We could see how it works (<a href="../How it works/index.html">here</a>)...</h3>
+    </div>
+</body>
+
+</html>

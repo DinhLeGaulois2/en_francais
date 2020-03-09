@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+
+<body>
+    <h1 align="center" class="title">About</h1>
+    <h3 align="center">[<a href="../code/index.html#section-about_id">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#section-about_id"><img src="img/global_view.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Animated Text</h3>
+                <h3><font color="red">2</font>: Styled Text</h3>
+                <h3><font color="red">3</font>: Animated Images-Link</h3>
+                <h3><font color="red">4</font>: Image (bg, shape)</h3>
+                <h3><font color="red">5</font>: Animated Link</h3>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;!-- scss: <a href="../code/sass/pages/_home.scss" target="_blank">/pages/_home.scss</a> --&gt;
+&lt;section class="section-about" id="section-about_id"&gt;
+    &lt;div class="u-center-text u-margin-bottom-big"&gt;
+        &lt;!-- scss: <a href="../code/sass/base/_typography.scss" target="_blank">base/_typography.scss</a> --&gt;
+        &lt;h2 class="heading-secondary"&gt;  &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 1</b></font>
+            Exciting tours for adventurous people
+        &lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;!-- scss: <a href="../code/sass/layout/_grid.scss" target="_blank">layout/_grid.scss</a> --&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-1-of-2"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+            &lt;h3 class="heading-tertiary u-margin-bottom-medium"&gt;
+                You're going to fall in love with nature
+            &lt;/h3&gt;
+
+            &lt;!-- scss: <a href="../code/sass/base/_typography.scss" target="_blank">base/_typography.scss</a> --&gt;
+            &lt;p class="paragraph"&gt;
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus asperiores, ut ex earum
+                quis odit aliquam, iure voluptatem reprehenderit magnam iste dolorem ratione assumenda
+                expedita ea incidunt fugiat optio voluptates?
+            &lt;/p&gt;
+
+            &lt;h3 class="heading-tertiary u-margin-bottom-medium"&gt;
+                Live adventures like you never have before.
+            &lt;/h3&gt;
+            &lt;p class="paragraph"&gt;
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus asperiores, ut ex earum
+                quis odit aliquam, iure voluptatem reprehenderit magnam iste dolorem ratione assumenda
+                expedita ea incidunt fugiat optio voluptates?
+            &lt;/p&gt;
+
+            &lt;!-- scss:<a href="../code/sass/components/_button.scss" target="_blank">components/_button.scss</a> --&gt;
+            &lt;a href="#" class="btn-text"&gt;Learn more &rarr;&lt;/a&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 5</b></font>
+        &lt;/div&gt;
+
+        &lt;div class="col-1-of-2"&gt;
+            &lt;!-- scss: <a href="../code/sass/components/_composition.scss" target="_blank">components/_composition.scss</a> --&gt;
+            &lt;div class="composition"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 3</b></font>
+                &lt;img src="img/nat-1-large.jpg" alt="photo 1" class="composition__photo composition__photo--p1"&gt;
+                &lt;img src="img/nat-2-large.jpg" alt="photo 2" class="composition__photo composition__photo--p2"&gt;
+                &lt;img src="img/nat-3-large.jpg" alt="photo 3" class="composition__photo composition__photo--p3"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+
+</body>
+
+</html>

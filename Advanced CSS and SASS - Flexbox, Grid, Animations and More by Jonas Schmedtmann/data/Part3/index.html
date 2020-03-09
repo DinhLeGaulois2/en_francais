@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">The Features</h1>
+    <h3 align="center">[<a href="../code/index.html#section-features_id">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#section-features_id"><img src="img/global_view.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Image (static)</h3>
+                <h3><font color="red">2</font>: Text (positioning)</h3>
+                <h3><font color="red">3</font>: Animated Block</h3>
+                <h3><font color="red">4</font>: Image (bg, shape)</h3>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;section class="section-features" id="section-features_id"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-1-of-4"&gt;
+            &lt;!-- scss: <a href="../code/sass/components/_feature-box.scss" target="_blank">components/_feature-box.scss</a> --&gt;
+            &lt;div class="feature-box"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 3</b></font>
+                &lt;i class="feature-box__icon icon-basic-world"&gt;&lt;/i&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 1</b></font>
+                &lt;h3 class="heading-tertiary u-margin-bottom-small"&gt;Explore the world&lt;/h3&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+                &lt;p class="feature-box__text"&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-1-of-4"&gt;
+            &lt;div class="feature-box"&gt;
+                &lt;i class="feature-box__icon icon-basic-compass"&gt;&lt;/i&gt;
+                &lt;h3 class="heading-tertiary u-margin-bottom-small"&gt;Meet nature&lt;/h3&gt;
+                &lt;p class="feature-box__text"&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-1-of-4"&gt;
+            &lt;div class="feature-box"&gt;
+                &lt;i class="feature-box__icon icon-basic-map"&gt;&lt;/i&gt;
+                &lt;h3 class="heading-tertiary u-margin-bottom-small"&gt;Find your way&lt;/h3&gt;
+                &lt;p class="feature-box__text"&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="col-1-of-4"&gt;
+            &lt;div class="feature-box"&gt;
+                &lt;i class="feature-box__icon icon-basic-heart"&gt;&lt;/i&gt;
+
+                &lt;!-- scss (u-margin-bottom-small): <a href="../code/sass/base/_utilities.scss" target="_blank">base/_utilities.scss</a> --&gt;
+                &lt;h3 class="heading-tertiary u-margin-bottom-small"&gt;Live a healthier life&lt;/h3&gt;
+                &lt;p class="feature-box__text"&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+</body>
+</html>

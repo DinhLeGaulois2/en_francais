@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+
+<body>
+    <h1 align="center" class="title">The Footer</h1>
+    <h3 align="center">[<a href="../code/index.html#footer_id">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#footer_id"><img src="img/global_view.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Image (static)</h3>
+                <h3><font color="red">2</font>: Length controlled line</h3>
+                <h3><font color="red">3</font>: Animated text</h3>
+                <h3><font color="red">4</font>: Text with animated link</h3>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;!-- scss: <a href="../code/sass/layout/_footer.scss" target="_blank">layout/_footer.scss</a> --&gt;
+&lt;footer class="footer" id="footer_id"&gt;
+    &lt;div class="footer__logo-box"&gt;
+        &lt;img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 1</b></font>
+    &lt;/div&gt;
+
+    &lt;!-- scss: <a href="../code/sass/layout/_grid.scss" target="_blank">layout/_grid.scss</a> --&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-1-of-2"&gt;
+            &lt;div class="footer__navigation"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+                &lt;ul class="footer__list"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 3</b></font>
+                    &lt;li class="footer__item"&gt;&lt;a href="#" class="footer__link"&gt;Company&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="footer__item"&gt;&lt;a href="#" class="footer__link"&gt;Contact us&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="footer__item"&gt;&lt;a href="#" class="footer__link"&gt;Carrers&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="footer__item"&gt;&lt;a href="#" class="footer__link"&gt;Privacy policy&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class="footer__item"&gt;&lt;a href="#" class="footer__link"&gt;Terms&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="col-1-of-2"&gt;
+            &lt;!-- scss: <a href="../code/sass/layout/_footer.scss" target="_blank">layout/_footer.scss</a> --&gt;
+            &lt;p class="footer__copyright"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+                Built my &lt;a href="#" class="footer__link"&gt;Jonas Schmedtmann&lt;/a&gt; for his online course &lt;a href="#" class="footer__link"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 4</b></font>
+                Advanced CSS and Sass&lt;/a&gt;. Copyright &copy; by Jonas Schmedtmann. You are 100% allowed to use this webpage for both personal and 
+                commercial use, but NOT to claim it as your own design. A credit to the original author, Jonas Schmedtmann, is of course 
+                highly appreciated! 
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+</body>
+
+</html>

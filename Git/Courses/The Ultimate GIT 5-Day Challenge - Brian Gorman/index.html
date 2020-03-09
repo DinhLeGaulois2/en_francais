@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate GIT 5-Day Challenge - Brian Gorman</title>
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+    <!-- <script src="assets/script/script.js"></script> -->
+</head>
+<body>
+    <h1 align="center" class="title">The Ultimate GIT 5-Day Challenge - Brian Gorman</h1>
+    <hr/>
+    <table align="center" style="background-color: black" id="home">
+        <!-- 3 columns/row -->
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><a href="#day1">Day 1 - Introduction to Git</a></h3>
+                </div>
+            </td>
+        </tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><a href="#day2">Day 2 - Get Setup Locally with Git</a></h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><a href="#day3">Day 3 - Clone your REMOTE repository to make a LOCAL copy</a></h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><a href="#day4">Day 4 - Add and Commit Changes, Then Push Your Changes From Local to Remote</a></h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><a href="#day5">Day 5 - Pull Changes from the REMOTE to Your LOCAL repository</a></h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><font color="black">[not from <b>Brian Gorman</b>]</font> <a href="#day6">Branching</a></h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="aSubject">
+                    <h3><font color="black">[not from <b>Brian Gorman</b>]</font> <a href="#day7">Git and Heroku</a></h3>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+    <h1 class="title" id="day1">Day 1 - Introduction to Git [<a href="#home">Home</a>]</h1>
+ 
+    <div class="my-note">
+        <h3><span style="background-color: black; color: white; padding: 0 5px">Goals:</span></h3>
+        <ul>
+            <li>Get an account at <b>GitHub</b> and/or <b>BitBucket</b>: <b><a href="https://github.com/" target='_blank'>Sign Up</a></b> to get a new account (or <a href="https://github.com/login" target='_blank'>Log in</a>)</li>
+            <li>Create a new Repository at <b>GitHub</b> and/or <b>BitBucket</b>
+                <p>&nbsp;&nbsp;<img src="img/part1 - new repository.jpg"/></p>
+            </li>
+        </ul>
+    </div>
+    <hr/>
+
+    <h1 class="title" id="day2">Day 2 - Get Setup Locally with Git [<a href="#home">Home</a>]</h1>
+
+    <div class="my-note">
+        <h3><span style="background-color: black; color: white; padding: 0 5px">Goals:</span></h3>
+        <ul>
+            <li>Get <b>GIT</b> on your machine (for <b>Windows</b>): download (<a href="https://git-scm.com/download/win" target='_blank'>here</a>) and installation...
+                <p>Result</p>
+                <p>&nbsp;&nbsp;<img src="img/part2 - windows list.jpg"/></p>
+            </li>
+            <li>Create a <b>local repository</b>: open "<b>Git Bash</b>", then...
+                <p class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git init <font color="white">my_new_repository</font></p>
+                <p class="my-note"><b><u>Attention:</u></b> this is a LOCAL repository (in your computer), not at the "Github" site...</p>
+            </li>
+        </ul>
+    </div>
+    <hr/>
+    
+    <h1 class="title" id="day3">Day 3 - Clone your REMOTE repository to make a LOCAL copy [<a href="#home">Home</a>]</h1>
+
+    <div class="my-note">
+        <h3><span style="background-color: black; color: white; padding: 0 5px">Goals:</span> Use <font color="red"><b>git clone</b></font> to create a LOCAL version of the REMOTE repository</h3>
+        <ul>
+            <li>From a repository at "<b>GitHub</b>"      
+                <ul type="circle">
+                    <li>To copy the link
+                        <p>&nbsp;&nbsp;<img src="img/part3 - clone public repository.jpg"/></p>
+                    </li>
+                    <li>Open <b>Git Bash</b> in
+                        <p>&nbsp;&nbsp;<img src="img/part2 - windows list.jpg"/></p>
+                    </li>
+                    <li>Clone operation
+                        <p>&nbsp;&nbsp;<img src="img/part3 - git bash.jpg"/></p>
+                    </li>
+                </ul>      
+            </li>
+        </ul>
+    </div>
+    <hr/>
+
+    <h1 class="title" id="day4">Day 4 - Add and Commit Changes, Then Push Your Changes From Local to Remote [<a href="#home">Home</a>]</h1>
+
+    <div class="my-note">
+        <h3><span style="background-color: black; color: white; padding: 0 5px">Goals:</span></h3>
+        <p>After modifying files, we want to update the content at the remote repository (at "<b>Github</b>"). 3 Steps:</p>
+        <ol type="1">
+            <li>Stage your changes (<a href="https://git-scm.com/docs/git-add" target='_blank'><b>ADD</b></a> to INDEX)
+                <ul>
+                    <li>
+                        <p>A specific file</p>
+                        <div class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git add <font color="yellow">my_file</font></span>
+                    </li>
+                    <li>
+                        <p>Stages all changes</p>
+                        <div class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git add <font color="yellow">-A</font></span>
+                    </li>
+                    <li>
+                        <p>Stages new files and modifications, without deletionss</p>
+                        <div class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git add <font color="yellow">.</font></span>
+                    </li>
+                    <li>
+                        <p>Stages modifications and deletions, without new files</p>
+                        <div class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git add <font color="yellow">-u</font></span>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="https://git-scm.com/docs/git-commit" target='_blank'><b>Commit</b></a> your changes (COMMIT to HEAD)
+                <p class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git commit <font color="yellow">-m</font> "<font color="white">any_comment_here</font>"</p>
+            </li>
+            <li><a href="https://git-scm.com/docs/git-push" target='_blank'><b>Push</b></a> your changes from LOCAL to REMOTE
+                <p class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git push origin master</p>
+            </li>
+        </ol>
+    </div>
+    <hr/>
+
+    <h1 class="title" id="day5">Day 5 - Pull Changes from the REMOTE to Your LOCAL repository [<a href="#home">Home</a>]</h1>
+
+    <div class="my-note">
+        <h3><span style="background-color: black; color: white; padding: 0 5px">Goals:</span> be able to get the changes from REMOTE to LOCAL.</h3>
+        <p>suppose that someone has made changes and put it into the remote repository. Now, we want to get the changes into our local repository.</p>
+        <p class="my-note" style="background-color: black; color: green">&nbsp;&nbsp;git <font color="yellow">pull</font> origin master</p>        
+    </div>
+    <hr/>
+
+    <h1 class="title" id="day6"><font color="black">[not from <b>Brian Gorman</b>]</font> Branching - [<a href="#home">Home</a>]</h1>
+    <p class="my-note"><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target='_blank'>Branching [external link]</a></p>
+    <hr/>
+
+    <h1 class="title" id="day7"><font color="black">[not from <b>Brian Gorman</b>]</font> Git and Heroku - [<a href="#home">Home</a>]</h1>
+    <p class="my-note"><a href="https://devcenter.heroku.com/articles/git" target='_blank'>Git and Heroku [external link]</a></p>
+
+    
+</body>
+</html>

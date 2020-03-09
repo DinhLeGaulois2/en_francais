@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+
+<body>
+    <h1 align="center" class="title">The Header</h1>
+    <h3 align="center">[<a href="../code/index.html#header_id">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#header_id"><img src="img/global_view.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Image (static)</h3>
+                <h3><font color="red">2</font>: Image (background)</h3>
+                <h3><font color="red">3</font>: Animated Text</h3>
+                <h3><font color="red">4</font>: Animated Button</h3>
+                <h3><font color="red">5</font>: Image (bg, modified shape)</h3>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;header class="header" id="header_id"&gt;
+    &lt;div class="header__logo-box"&gt;
+        &lt;!-- scss: <a href="../code/sass/layout/_header.scss" target="_blank">layout/_header.scss</a> --&gt;&lt;/div&gt;
+        &lt;img src="img/logo-white.png" alt="Logo" class="header__logo"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 1</b></font>
+    &lt;/div&gt;
+
+    &lt;div class="header__text-box"&gt;
+
+        &lt;!-- scss: <a href="../code/sass/base/_typography.scss" target="_blank">base/_typography.scss</a> --&gt;
+        &lt;h1 class="heading-primary"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 3</b></font>
+            &lt;span class="heading-primary--main"&gt;Outdoors&lt;/span&gt;
+            &lt;span class="heading-primary--sub"&gt;is where life happens&lt;/span&gt;
+        &lt;/h1&gt;
+
+        &lt;!-- scss: <a href="../code/sass/components/_button.scss" target="_blank">components/_button.scss</a> --&gt;
+        &lt;a href="#" class="btn btn--white btn--animated"&gt;Discover our tours&lt;/a&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 4</b></font>
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+    <!-- <hr/>
+    <h3 id="1_id"><b><u>Image (static)</u></b>:</h3>
+    <hr/>
+    
+    <h3 id="2_id"><b><u>Image (background)</u></b>:</h3>
+    <hr/>
+    
+    <h3 id="3_id"><b><u>Animated Text</u></b>:</h3>
+    <hr/>
+    
+    <h3 id="4_id"><b><u>Animated Button</u></b>:</h3>
+    <hr/>
+    
+    <h3 id="5_id"><b><u>Image (bg, modified shape)</u></b>:</h3>
+    <hr/> -->
+
+</body>
+
+</html>

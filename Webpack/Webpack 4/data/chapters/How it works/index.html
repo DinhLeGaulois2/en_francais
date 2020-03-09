@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works?</title>
+
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
+</head>
+
+<body>
+    <p align="center">[<a href="https://www.youtube.com/watch?v=deyxI-6C2u4">Source</a> (Youtube)]</p>
+    <h1 align="center" class="title">How It Works?</h1>
+    <h3 align="center">[<a href="../../../index.html">Home</a>]</h3>
+    <table border="1" align="center">
+        <tr>
+            <td><img src="./img/global_view.jpg"/></td>
+            <td valign="top" style="font-size: 1.5rem; padding: 10px">
+                <div><font color="red"><b>1</b></font>: "dist" is created when ("<b>production</b>" mode):
+                    <p class="my-note" style="background-color: black; color: green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm run build</p>
+                    <br/>
+                </div>
+                <div><font color="red"><b>2</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/components/App.js" target="_blank"><b>App.js</b></a>", a <i>React</i> component<br/></div>
+                <div><font color="red"><b>3</b></font>: "<b>index.html</b>", used in "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"<br/> needs it (see "<b>plugins</b>")...<br/></div>
+                <div><font color="red"><b>4</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/index.js" target="_blank"><b>index.js</b></a>", the "<b>entry</b>" of "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"<br/></div>
+                <div><font color="red"><b>5</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/package.json" target="_blank">package.json</a>"<br/></div>
+                <div><font color="red"><b>6</b></font>: "<a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a>"</div>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+    <div class="my-note" style="padding: 0 20px">
+        <h3>With the "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>" file:</h3>
+        <table align="center"><tr><td>
+            <pre class="my-note" style="background-color: black; color: green;"><code>const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    entry: './src/<font color="yellow"><b>index.js</b></font>',
+    <strike>output: {
+        path: path.join(__dirname, '/dist'),
+        filename: 'index_bundle.js'
+    },</strike>
+    module: {
+        rules: [
+            { // for "Babel"
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: { loader: 'babel-loader' }
+            },
+            { // for "SASS"
+                test: /\.s(a|c)ss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ template: './src/<font color="yellow"><b>index.html</b></font>' })
+    ]
+}</code></pre>
+        </td></tr></table>
+
+        <p>If we execute with the <b>development</b>'s mode</p>
+        <p class="my-note" style="background-color: black; color: green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm run build</p>
+        <div>The "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>" will be executed. From the "<b>entry</b>" point ("<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/index.js" target="_blank">index.js</a></b>" in "<b>src/index.js</b>"), we have (just for the structure of this app):
+            <p class="my-note" style="background-color: gray; color: cyan;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/index.js" target="_blank">index.js</a></b>" &rarr; 
+                "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/components/App.js" target="_blank">App.js</a></b>" ("<b>components/App.js</b>") &rarr;
+                "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/style.scss" target="_blank">style.scss</a></b>" ("<b>src/style.scss</b>") &rarr;
+                "<b>index.html</b>" ("<b>src/index.html</b>") &rarr;
+                "Web Browser"
+            </p>
+            
+            <p>The part that call the "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/src/index.html" target="_blank">index.html</a></b>" ("<b>src/index.html</b>") in the "<b><a href="../../code/React_and_Webpack_4_From_Scratch_No_CLI/webpack.config.js" target="_blank">webpack.config.js</a></b>"</p>
+            <pre class="my-note" style="background-color: black; color: green"><code>plugins: [
+    new HtmlWebpackPlugin({
+        // use our "index.html" file and insert the "index_bundle.js" in it
+        template: './src/<font color="yellow">index.html</font>'
+    })
+]</code></pre>
+        </div>
+    </div>
+    <h3 align="center">(The installation and the configuration of the whole app is <a href="../Installation and Config/index.html">here</a>)</h3>
+</body>
+
+</html>

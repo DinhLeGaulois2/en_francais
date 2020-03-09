@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+
+<body>
+    <h1 align="center" class="title">CSS/SASS Configuration</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+    <br />
+    <h3><b><u>Installation</u></b></h3>
+    <div class="my-note">
+        <ol type="1">
+            <li>Install <a href="https://nodejs.org/en/" target="_blank">NodeJS</a><br /><br/></li>
+            <li>Creation of "<b>package.json</b>" (in a "console"):
+                <h3 class="my-note" style="background-color: black; color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>npm init</b></h3>
+                <br/>
+            </li>
+            <li>Installation of the "<b>SASS</b>" compiler:
+                <h3 class="my-note" style="background-color: black; color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>npm install <font color="yellow">node-sass</font> --save-dev</b></h3>
+                <br />
+            </li>
+            <li>Compile Commande:
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/compile_commande.jpg"/></p>
+                <p>In a console, to compile (from <b>SCSS</b> to <b>CSS</b>):</p>                
+                <h3 class="my-note" style="background-color: black; color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>npm run <font color="#e7c071">compile:sass</font></b></h3>
+            </li>
+        </ol>
+    </div>
+
+    <hr />
+    <h3><b><u>Assembling "<b>SCSS</b>" Files</u></b>: the structure is showed as below. Files are assembled in <a href="../code/sass/main.scss" target="_blank">main.scss</a>...</h3>
+
+    <div>
+        <table align="center" style="background-color: black; color: white; padding: 0 20px">
+            <tr>
+                <td>
+                    <h1 align="center">
+                        <font color="cyan">SASS Files</font>
+                    </h1>
+                    <hr />
+                    <table>
+                        <tr>
+                            <td valign="top">
+                                <div style="margin: 20px">abstract
+                                    <ul type="circle">
+                                        <li><a href="../code/sass/abstracts/_functions.scss" target="_blank">_functions.scss</a></li>
+                                        <li><a href="../code/sass/abstracts/_mixins.scss" target="_blank">_mixins.scss</a></li>
+                                        <li><a href="../code/sass/abstracts/_variables.scss" target="_blank">_variables.scss</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div style="margin: 20px">base
+                                    <ul type="circle">
+                                        <li><a href="../code/sass/base/_animation.scss" target="_blank">_animation.scss</a></li>
+                                        <li><a href="../code/sass/base/_base.scss" target="_blank">_base.scss</a></li>
+                                        <li><a href="../code/sass/base/_typography.scss" target="_blank">_typography.scss</a></li>
+                                        <li><a href="../code/sass/base/_utilities.scss" target="_blank">_utilities.scss</a></li>
+                                    <br />
+                                </div>                                
+                            </td>
+                            <td valign="top">
+                                <div style="margin: 20px">components
+                                    <ul type="circle">
+                                        <li><a href="../code/sass/components/_bg-video.scss" target="_blank">_bg-video.scss</a></li>
+                                        <li><a href="../code/sass/components/_button.scss" target="_blank">_button.scss</a></li>
+                                        <li><a href="../code/sass/components/_card.scss" target="_blank">_card.scss</a></li>
+                                        <li><a href="../code/sass/components/_composition.scss" target="_blank">_composition.scss</a></li>
+                                        <li><a href="../code/sass/components/_feature-box.scss" target="_blank">_feature-box.scss</a></li>
+                                        <li><a href="../code/sass/components/_form.scss" target="_blank">_form.scss</a></li>
+                                        <li><a href="../code/sass/components/_story.scss" target="_blank">_story.scss</a></li>
+                                    </ul>
+                                </div>                                
+                            </td>
+                        </tr>
+                        <tr><td colspan="3"><hr/></td></tr>
+                        <tr>
+                            <td valign="top">
+                                <div style="margin: 20px">layout
+                                    <ul type="circle">
+                                        <li><a href="../code/sass/layout/_footer.scss" target="_blank">_footer.scss</a></li>
+                                        <li><a href="../code/sass/layout/_grid.scss" target="_blank">_grid.scss</a></li>
+                                        <li><a href="../code/sass/layout/_header.scss" target="_blank">_header.scss</a></li>
+                                        <li><a href="../code/sass/layout/_navigation.scss" target="_blank">_navigation.scss</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div style="margin: 20px">pages
+                                    <ul type="circle">
+                                        <li><a href="../code/sass/pages/_home.scss" target="_blank">_home.scss</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div style="margin: 20px">main
+                                    <ul><li><a href="../code/sass/main.scss" target="_blank">main.scss</a></li></ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Booking</h1>
+    <h3 align="center">[<a href="../code/index.html#section-book_id">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#section-book_id"><img src="img/global_view.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Background</h3>
+                <h3><font color="red">2</font>: Form
+                    <ul>
+                        <li><font color="red">2.1</font>: "Input"</li>
+                        <li><font color="red">2.2</font>: "Checkbox"</li>
+                        <li><font color="red">2.3</font>: Animated Button</li>
+                        <li><font color="red">2.4</font>: Label (static)</li>
+                        <li><font color="red">2.5</font>: Image (bg, shape)</li>
+                        <li><font color="red">2.6</font>: Animated Text</li>
+                    </ul>
+                </h3>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;section class="section-book" id="section-book_id"&gt;
+    &lt;div class="row"&gt;
+        &lt;!-- scss: <a href="../code/sass/pages/_home.scss" target="_blank">pages/_home.scss</a> --&gt;
+        &lt;div class="book"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+            &lt;div class="book__form"&gt;
+                &lt;!-- scss: <a href="../code/sass/components/_form.scss" target="_blank">components/_form.scss</a> --&gt;
+                &lt;form action="#" class="form"&gt;
+                    &lt;div class="u-margin-bottom-medium"&gt;
+                        &lt;h2 class="heading-secondary"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+2"><b>&larr; 2.6</b></font>
+                            Start booking now
+                        &lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form__group"&gt;
+                        &lt;input type="text" class="form__input" placeholder="Full Name" id="name" required&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+2"><b>&larr; 2.1</b></font>
+                        &lt;/input&gt;
+                        &lt;label for="name" class="form__label"&gt;Full Name&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form__group"&gt;
+                        &lt;input type="email" class="form__input" placeholder="Email address" id="email" required&gt;
+                        &lt;/input&gt;
+                        &lt;label for="email" class="form__label"&gt;Email Address&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form__group"&gt;
+                        &lt;!-- scss (u-margin-bottom-medium): <a href="../code/sass/base/_utilities.scss" target="_blank">base/_utilities.scss</a> --&gt;
+                        &lt;div class="form__radio-group u-margin-bottom-medium"&gt;
+                            &lt;input type="radio" class="form__radio-input" id="small" name="size"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+2"><b>&larr; 2.2</b></font>
+                            &lt;label for="small" class="form__radio-label"&gt;
+                                &lt;span class="form__radio-button"&gt;&lt;/span&gt;
+                                Small tour group &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+2"><b>&larr; 2.4</b></font>
+                            &lt;/label&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form__radio-group"&gt;
+                            &lt;input type="radio" class="form__radio-input" id="large" name="size"&gt;
+                            &lt;label for="large" class="form__radio-label"&gt;
+                                &lt;span class="form__radio-button"&gt;&lt;/span&gt;
+                                Large tour group
+                            &lt;/label&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="form__group"&gt;
+                        &lt;button class="btn btn--green"&gt;Next step &rarr;&lt;/button&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+2"><b>&larr; 2.3</b></font>
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+</body>
+</html>

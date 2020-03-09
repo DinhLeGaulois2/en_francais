@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS and SASS - Flexbox, Grid, Animations and More</title>
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">The Menu</h1>
+    <h3 align="center">[<a href="../code/index.html#navi-toggle">See the Effects</a>] - [<a href="../../index.html">Home</a>]</h3>
+    <p align="center"><a href="../code/index.html#navi-toggle"><img src="img/global_view.jpg"/></a></p>
+    <table align="center" border="1">
+        <tr>
+            <td><a href="../code/index.html#navi-toggle"><img src="img/global_view_back.jpg" /></a></td>
+            <td style="padding: 0 20px">
+                <h3><font color="red">1</font>: Animated Buttun</h3>
+                <h3><font color="red">2</font>: Animated Text</h3>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+
+    <h3 id="1_id"><b><u></u></b></h3>
+    <hr/>
+    <h3 class="title">Code HTML:</h3>
+<pre class="my-note"><code>&lt;!-- scss: <a href="../code/sass/layout/_navigation.scss" target="_blank">layout/_navigation.scss</a> --&gt;
+&lt;div class="navigation"&gt;
+    &lt;input type="checkbox" class="navigation__checkbox" id="navi-toggle"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 1</b></font>
+
+    &lt;label for="navi-toggle" class="navigation__button"&gt;MENU&lt;/label&gt;
+
+    &lt;div class="navigation__background"&gt;&nbsp;&lt;/div&gt;
+
+    &lt;nav class="navigation__nav"&gt;
+        &lt;ul class="navigation__list"&gt; &nbsp;&nbsp;&nbsp;&nbsp;// <font color="red" size="+3"><b>&larr; 2</b></font>
+            &lt;li class="navigation__item"&gt;&lt;a href="#" class="navigation__link"&gt;&lt;span&gt;01&lt;/span&gt;About Natours&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="navigation__item"&gt;&lt;a href="#" class="navigation__link"&gt;&lt;span&gt;02&lt;/span&gt;Your benefits&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="navigation__item"&gt;&lt;a href="#" class="navigation__link"&gt;&lt;span&gt;03&lt;/span&gt;Popular tours&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="navigation__item"&gt;&lt;a href="#" class="navigation__link"&gt;&lt;span&gt;04&lt;/span&gt;Stories&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="navigation__item"&gt;&lt;a href="#" class="navigation__link"&gt;&lt;span&gt;05&lt;/span&gt;Book now&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+    
+</body>
+</html>
