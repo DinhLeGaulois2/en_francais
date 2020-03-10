@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 6 - Testing Asynchronous Code</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Section 6 - Testing Asynchronous Code</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+
+    <div class="my-note">
+        <h3>Using promises [about 'version']</h3>
+        <p>Previously (<a href="../section5/index.html#getter">here</a>), we get the "<b>version</b>" the static way, now, we want to get its value by making a request to an API. 
+        As that is an <font color="red"><b>asynchronous</b></font>, process, we need to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target='_blank'>promise</a>...</p>
+
+        <p>In our <a href="../../code/6. Testing asynchronous code/end/calculator.js" target='_blank'>calculator.js</a>, we set:</p>
+        <pre class='my-note-dark'><code>Object.defineProperty(Calculator.prototype, 'version', {
+    get: function() {        
+        return fetch('https://gist.githubusercontent.com/juanlizarazo
+                /4b2d229ba483ca13b1a6d7bf3079dc8b/raw
+                /228ac05e04118037be02c38d9b86945c1356a2e2/version.json')
+            .<font color="yellow">then</font>(function(result){
+                // to transform the result into the JSON format
+                return result.json()
+            })
+            .<font color="yellow">then</font>(function(json){ // from the previous "then"
+                // get the "version" from the returned JSON object
+                return json.<font color="red"><b>version</b></font>;
+            })
+    },
+    enumerable: true,
+    configurable: true
+})</code></pre>
+
+        <p>Update the <a href='../section5/index.html#callVersion' title='where the function is used to display...'>display</a> as well (in <a href="../../code/6. Testing asynchronous code/end/main.js" target='_blank'>main.js</a>). <b><u>Note:</u></b> "<a href="../../code/6. Testing asynchronous code/end/main.js" target='_blank'>main.js</a>" containing "<b>handlers</b>"...</p>
+        <pre class="my-note-dark"><code>function showVersion() {
+  const calculator = new Calculator();
+  const element = document.getElementById('version');
+
+  calculator.version
+    .<font color="yellow">then</font>(function (<font color="red"><b>version</b></font>) {
+      element.innerText = <font color="red"><b>version</b></font>;
+    });
+}</code></pre>
+    </div>
+
+    <div class="my-note">
+        <h3>The <font color="red"><b>done</b></font> callback [about 'version']</h3>
+        <p>Let test the <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>getter</a>...</p>
+        <pre class="my-note-dark"><code>describe('get version', function () {
+    // "<font color="red"><b>done</b></font>" is a callback
+    it('fetches version from external source', function (<font color="red"><b>done</b></font>) {
+        spyOn(window, 'fetch').and.returnValue(Promise.resolve(
+            new Response('{ "version": "0.1" }')
+        ));
+
+        calculator.version.then(function (version) {
+            expect(version).toBe('0.1');
+
+            <font color="red"><b>done</b></font>(); // the callback function needs to be called !!!!!!!!!!!!!!!!!
+        });
+    });
+})</code></pre>
+    </div>
+
+    <div class="my-note">
+        <h3><font color="red" size="+3"><b>Async</b></font> and <font color="red" size="+3"><b>await</b></font> with specs (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target='_blank'>docs</a>) [about 'version']</h3>
+        <pre class='my-note-dark'><code>describe('get version with async and await', function () {
+    // "<b>done</b>" is a callback
+    it('fetches version from external source', <font color="red" size="+3"><b>async</b></font> function (done) {
+        spyOn(window, 'fetch').and.returnValue(Promise.resolve(
+            new Response('{ "version": "0.1" }')
+        ));
+
+        const version = <font color="red" size="+3"><b>await</b></font> calculator.version;
+
+        expect(version).toBe('0.1');
+        done(); //  the callback function needs to be called !!!!!!!!!!!!!!!!!
+    });
+})</code></pre>
+    </div>
+</body>
+</html>

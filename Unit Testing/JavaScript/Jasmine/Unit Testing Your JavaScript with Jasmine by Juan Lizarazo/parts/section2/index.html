@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2 - Jasmine Functions</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+
+<body>
+    <h1 align="center" class="title">Section 2 - Jasmine Functions</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+    
+    <div class="my-note">
+        <h3 id="simple-calculator">The "<font color="red" size="+3"><b>simple calculator</b></font>" structure:</h3>
+        <ul>
+            <li><a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a>: make calculation (logic operations)</li>
+            <li><a href="../../code/2. Jasmine functions/end/calculator.spec.js" target='_blank'>calculator.spec.js</a>: tests on <a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a></li>
+            <li><a href="../../code/2. Jasmine functions/end/custom-matchers.js" target='_blank'>custom-matchers.js</a>: example to show how to create a custom-matchers</li>
+            <li><a href="../../code/2. Jasmine functions/end/main.js" target='_blank'>main.js</a>: containing "<b>handlers</b>" ("<b>listeners</b>", etc.)</li>
+            <li><a href="../../code/2. Jasmine functions/end/main.spec.js" target='_blank'>main.spec.js</a>: testing on <a href="../../code/2. Jasmine functions/end/main.js" target='_blank'>main.js</a>'s functions</li>
+            <li><a href="../../code/2. Jasmine functions/end/simple-calculator.html" target='_blank'>simple-calculator.html</a>: the app's entry file</li>
+            <li><a href="../../code/2. Jasmine functions/end/spec-runner.html" target='_blank'>spec-runner.html</a>: to execute Jasmine tests</li>
+            <li><a href="../../code/2. Jasmine functions/end/style.css" target='_blank'>style.css</a>: styling...</li>
+            <li><span style="background-color: black;">&nbsp;<font color="#ffe793"><b>lib</b></font>&nbsp;</span>: the folder containing Jasmine's files</li>
+        </ul>
+    </div>
+
+    <div class="my-note" style="background-color: black; color:white; text-align: center;">(code: "<font color="#00fe02" size="+2"><b>./code/2. Jasmine functions/end/*</b></font>")</div>
+    <hr/>
+
+    <div class="my-note" style="background-color: black; color:white">
+        <h2 align="center">Simple Calculator</h2>
+        <table align="center" border="1"><tr>
+            <td valign="top"><p align="center"><img src="img/calculator.jpg" /> </p></td>
+            <td><pre class="my-note"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Simple calculator&lt;/title&gt;    // &larr; <font color="red" size="+2"><b>1</b></font>
+
+    // links to external CSS and JavaScript files
+    ...
+    
+&lt;/head&gt;
+
+&lt;body class="body"&gt;
+    &lt;h1 class="title"&gt;Simple calculator&lt;/h1&gt;    // &larr; <font color="red" size="+2"><b>2</b></font>
+
+    &lt;input     // &larr; <font color="red" size="+2"><b>3</b></font>
+        class="input" 
+        type="text" 
+        title="calculator"
+        placeholder="Enter operation"
+        value="5+3"
+        // "<b><font color="blue">calculate</font></b>" comes from "<b><a href="../../code/2. Jasmine functions/end/main.js" target='_blank'>main.js</a></b>"
+        onchange="calculate(this.value)"
+    /&gt;
+    &lt;div class="result-container"&gt;    // &larr; <font color="red" size="+2"><b>4</b></font>
+        &lt;div class="title"&gt;Result&lt;/div&gt;
+        &lt;span id="result"&gt;8&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></td>
+        </tr></table>
+        
+        <div class="my-note" style="background-color:white">
+            <h2 align="center">Building the project</h2>
+            <div class="my-note" style="background-color: #e1e0d6;">
+                <ul>
+                    <li>Create the "<b>simple-calculator.html</b>";</li>
+                    <li>Create the "<b><a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a></b>" file to make operations (addition, substraction, multiplication and division);</li>
+                    <li>Create the "<b><a href="../../code/2. Jasmine functions/end/main.js" target='_blank'>main.js</a></b>" (handling "<b>errors</b>") with the <i>listerner</i> name "<b><a href="../../code/2. Jasmine functions/end/main.js" target='_blank'>calculate</a></b>"</li>
+                </ul>
+            </div>            
+        </div>
+        <div class="my-note" style="background-color: white">
+            <h2 align="center">Testing</h2>
+            <div class="my-note" style="background-color: #e1e0d6;">
+                <h3>Setup <b>Jasmine</b></h3>    
+                <ul>
+                    <li><h3>Get the "<b>zip</b>" file</h3>
+                        <p>&nbsp;&nbsp;<img src="../section1/img/Jasmine Files.jpg"/> </p>
+                    </li>
+                    <li>
+                        <h3>From the (unzipped of) "<b>jasmine-standalone-XXXXX.zip</b>" </h3>
+                        <div class="my-note-dark">
+                            <ul>
+                                <li>We put, into the "<b>lib</b>" folder of our project, the following files (from the inside of "<i>lib/jasmine-XXXXX/</i>")...
+                                    <ul>
+                                        <li><a href="../../code/your first spec/lib/boot.js" target='_blank'><b>boot.js</b></a></li>
+                                        <li><a href="../../code/your first spec/lib/jasmine-html.js" target='_blank'><b>jasmine-html.js</b></a></li>
+                                        <li><a href="../../code/your first spec/lib/jasmine.css" target='_blank'><b>jasmine.css</b></a></li>
+                                        <li><a href="../../code/your first spec/lib/jasmine.js" target='_blank'><b>jasmine.js</b></a></li>
+                                    </ul>
+                                    <br/>
+                                </li>
+                                <li>We copy, the "<b>SpecRunner.html</b>" into our project as well (under the "<b>root</b>" folder).<br/><br/></li>  
+                                <li>
+                                    We get
+                                    <p>&nbsp;&nbsp;<img src="img/jasmine files.jpg"/> </p>
+                                </li>                                
+                                <li>Changes in "<b>spec-runner.html</b>"
+                                    <p>&nbsp;&nbsp;<img src="img/spec-runner.jpg"/> </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>   
+            </div>
+            <div class="my-note" style="background-color: #e1e0d6;">
+                <h3>Let's Make Tests</h3>  
+                
+                <div class="my-note" style="background-color: white;">
+                    <h3>Test the functions in "<b><a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a></b>"</h3>    
+                    <p>Naming convention</p>
+                    <div class="my-note" style="background-color: #c5c7c7;">
+                        // Spec file extensions<br/>
+                        &nbsp;&nbsp;<font color="cyan"><b>*.spec.js</b></font><br/>
+                        <br/>
+                        <div class="my-note" style="background-color: #9c9c95">
+                            Example<br/>
+                            &nbsp;&nbsp;<b>(target file name)</b><font color="cyan"><b>.spec.js</b></font><br/>
+                            In our case<br/>
+                            &nbsp;&nbsp;<b>calculator</b><font color="cyan"><b>.spec.js</b></font>
+                        </div>
+                        <p>Example of the content of our "<b><a href="../../code/2. Jasmine functions/end/calculator.spec.js" target='_blank'>calculator.spec.js</a></b>" (we could put any expression, but, it's better to put the name of the file so we could know - when getting the result of the test - the source)</p>
+                        <p>&nbsp;&nbsp;<img src="img/spec example.jpg"/> </p>
+                    </div>
+                </div>  
+                
+                <!-- Testing the "calculator.js" file... -->
+                <div class="my-note" style="background-color: #c5c7c7;">
+                    <h3 id="calculator-test">Testing the "<b><a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a></b>" file...</h3>  
+                    <table align="center" style="background-color: black; color: cyan; padding: 0 10px">
+                        <tr>
+                            <td valign="top">"<b><a href="../../code/2. Jasmine functions/end/calculator.js" target='_blank'>calculator.js</a></b>"
+    <pre class="my-note"><code>function Calculator() {
+        this.total = 0;
+    }
+
+    Calculator.prototype.<font color="orange"><b>add</b></font> = function(number) {
+        return this.total += number;
+    }
+
+    Calculator.prototype.<font color="orange"><b>substract</b></font> = function(number) {
+        return this.total -= number;
+    }
+
+    Calculator.prototype.<font color="orange"><b>multiply</b></font> = function(number) {
+        return this.total *= number;
+    }
+
+    Calculator.prototype.<font color="orange"><b>divide</b></font> = function(number) {
+        if(number === 0)
+            throw new Error('Cannot divide by zero');
+            
+        return this.total /= number;
+    }</code></div>
+                            </td>
+                            <td valign="top">"<b><a href="../../code/2. Jasmine functions/end/calculator.spec.js" target='_blank'>calculator.spec.js</a></b>"
+                                <div class="my-note" style="background-color: white; font-weight: bold;">
+                                <font color="red"><b><u>IMPORTANT:</u></b></font> create new instance for EACH test<br/>
+                                &nbsp;&nbsp;--> Each test will be independant from each other
+                                </div>
+    <pre class="my-note"><code><font color="blue"><b>describe</b></font>('calculator.js', function() {
+    <font color="blue"><b>it</b></font>('should <font color="orange"><b>add</b></font> numbers to total', function(){
+        //Create an instance of "<b>Calculator</b>"
+        const calculator = new Calculator();
+
+        calculator.<font color="orange"><b>add</b></font>(5);
+
+        <font color="blue"><b>expect</b></font>(calculator.total).<font color="blue"><b>toBe</b></font>(5);
+    });
+    
+    <font color="blue"><b>it</b></font>('should <font color="orange"><b>substract</b></font> numbers from total', function(){
+        const calculator = new Calculator();
+
+        calculator.total = 30;
+        calculator.<font color="orange"><b>substract</b></font>(5);
+
+        <font color="blue"><b>expect</b></font>(calculator.total).<font color="blue"><b>toBe</b></font>(25);
+    });
+    
+    <font color="blue"><b>it</b></font>('should <font color="orange"><b>multiply</b></font> total by number', function(){
+        const calculator = new Calculator();
+
+        calculator.total = 100;
+        calculator.<font color="orange"><b>multiply</b></font>(2);
+        
+        <font color="blue"><b>expect</b></font>(calculator.total).<font color="blue"><b>toBe</b></font>(200);
+    });
+    
+    <font color="blue"><b>it</b></font>('should <font color="orange"><b>divide</b></font> total by number', function(){
+        const calculator = new Calculator();
+
+        calculator.total = 200;
+        calculator.<font color="orange"><b>divide</b></font>(2);
+        
+        <font color="blue"><b>expect</b></font>(calculator.total).<font color="blue"><b>toBe</b></font>(100);
+    });
+});</code></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><hr/>Execution of "<b><font color="red">spec-runner.html</font></b>" (for testing)
+                                <p align="center"><img src="img/test result.jpg"/></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Disabled specs and disabled suites -->
+                <div class="my-note" style="background-color: #c5c7c7;">
+                    <div class="my-note" style="background-color: #9c9c95;">
+                        <h3>Disabled specs</h3>
+                        <div class="my-note-dark">
+                            <p><font color="red"><b><u>What?</u></b></font> a spec that will report as <font color="yellow">pending</font> and <font color="yellow">will not be executed</font></p>
+                            <p><font color="red"><b><u>Why?</u></b></font> 2 Common cases</p>
+                            <ul>
+                                <li>Changes in the code.</li>
+                                <li><b>TDD</b> &rarr; Test Driven Development.</li>
+                            </ul>                        
+                            <p><font color="red"><b><u>How?</u></b></font> By adding a <font color="red"><b>x</b></font> in front of "<b>it</b>":</p>
+                            <pre class="my-note"><code><font color="red"><b>x</b></font><b>it</b>('should multiply total by number', function(){
+    const calculator = new Calculator();
+
+    calculator.total = 100;
+    calculator.multiply(2);
+            
+    expect(calculator.total).toBe(200);
+});</code></pre>
+                        </div>
+                    </div>
+                    <div class="my-note" style="background-color: #9c9c95;">
+                         <h3>disabled suites: by adding a <font color="red"><b>x</b></font> in front of "<b>describe</b>":</h3>
+                            <pre class="my-note"><code><font color="red"><b>x</b></font><b>describe</b>('calculator.js', function() {
+    ...
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

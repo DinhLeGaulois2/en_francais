@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 4 - Organizing Your Specs</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Section 4 - Organizing Your Specs</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+
+    <div class="my-note" style="background-color: black; color:white; text-align: center;">(code: "<font color="#00fe02" size="+2"><b>./code/4. Organizing your specs/end/*</b></font>")</div>
+    <hr/>
+
+    <div class="my-note">
+        <div class="my-note-dark">
+            <ul>
+                <li>describe &rarr; groups specs &rarr; suite</li>
+                <li>Through namig convention: create a spec file with the same name that matches the source file you are unit testing. Example:
+                    <p class="my-note">&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="red">calculator</font>.js</b> &rarr; <b><font color="red">calculator</font>.spec.js</b></p>
+                </li>
+                <li>Keep the folder structure</li>
+                <li>By nesting suites!</li>
+            </ul>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3>By nesting suites!</h3>
+            <p>Grouping things by corresponding function, for example, </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/nesting suites.jpg" style="border: 1px solid white"/></p>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3>Set up and Teardown: prerequisites before/after running test(s): <font color="cyan">beforeAll</font>, <font color="cyan">beforeEach</font>, <font color="cyan">afterAll</font>, <font color="cyan">afterEach</font></h3>
+            <div class="my-note">
+                <table align="center" border="1" style="background-color: black; color: white">
+                    <tr>
+                        <td valign="top">
+                            <h3>If we have a structure:</h3>
+                            <table class="my-note" style="background-color: gray; color: white" align="center"><tr><td><pre><code><font color="cyan">describe</font>()
+        <font color="cyan">beforeAll</font>()   // <font color="red" size="+2">I</font>
+        <font color="cyan">beforeEach</font>()  // II
+        <font color="cyan">afterAll</font>()    // <font color="red" size="+2">III</font>
+        <font color="cyan">afterEach</font>()   // IV
+
+        <font color="cyan">it</font>()   // V
+        <font color="cyan">it</font>()   // VI
+        <font color="cyan">it</font>()   // VII</code></pre></td></tr></table>
+                            <div class="my-note">
+                                <h3>Execution order:</h3>
+                                <div class="my-note" style="background-color: white; color: blue; font-weight: bold;">
+                                    <font color="red" size="+2">I</font> &rarr; <br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; II &rarr; V &rarr; IV<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; II &rarr; VI &rarr; IV<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; II &rarr; VII &rarr; IV <br/>
+                                    &rarr; <font color="red" size="+2">III</font>
+                                </div>
+                            </div>
+                        </td>
+                        <td valign="top">                            
+                            <h3>Example 1 (<b><a href="../../code/4. Organizing your specs/end/calculator.spec.js" target='_blank'>calculator.spec.js</a></b>):</h3>
+<pre class="my-note" style="background-color: gray; color: white"><code>describe('calculator.js', function() {
+  describe('Calculator', function() {
+    let calculator;
+    let calculator2;
+
+    <font color="cyan">beforeEach</font>(function() {
+      // Anything inside this block executes before
+      // each spec (it) inside this describe.
+      calculator = new Calculator();
+      calculator2 = new Calculator();
+    });
+
+    <font color="cyan">afterEach</font>(function() {
+      // Anything inside this block executes after
+      // each spec (it) inside this describe.
+    });
+    
+    ...
+}</code></pre>
+                    </td>                    
+                    <td valign="top">                            
+                        <h3>Example 2 (<b><a href="../../code/4. Organizing your specs/end/main.spec.js" target='_blank'>main.spec.js</a></b>):</h3>
+<pre class="my-note" style="background-color: gray; color: white"><code>describe('main.js', function() {
+  ...
+
+  describe('updateResult()', function() {
+    // Executed ONCE before all specs inside this suite are executed.
+    <font color="cyan">beforeAll</font>(function() {      
+      const element = document.createElement('div');
+      element.setAttribute('id', 'result');
+      document.body.appendChild(element);
+
+      this.element = element;
+    });
+
+    // Executed ONCE after all specs inside this describe are executed.
+    <font color="cyan">afterAll</font>(function() {      
+      document.body.removeChild(this.element);
+    });
+
+    it('adds result to DOM element', function() {
+      updateResult('5');
+
+      expect(this.element.innerText).toBe('5');
+    });
+  });
+});</code></pre>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3>Jasmine and the [<font color="red" size="+2"><b>this</b></font>] keyword</h3>
+            <table align="center" border="1"><tr>
+                <td valign='top'>
+                    <h3>Without <font color="red" size="+2"><b>this</b></font><br/><br/></h3>
+                    <pre class="my-note" style="background-color: gray; color: white"><code>describe('main.js', function() {
+    ...
+    
+    describe('updateResult()', function() {
+        let <font color="yellow"><b>element</b></font>;
+
+        // Executed ONCE before all specs are executed
+        beforeAll(function() { 
+            element = document.createElement('div')
+            element.setAttribute('id', 'result');
+            document.body.appendChild(element);
+        });
+
+        // Executed ONCE after all specs are executed
+        afterAll(function() { // let set some clean up ...
+            const element = document.getElementById('result');
+
+            document.body.removeChild(<font color="yellow"><b>element</b></font>);
+        });
+
+        it('adds result to DOM element', function() {
+            updateResult('5');
+
+            // <font color="yellow"><b>element</b></font> could be used here
+            expect(<font color="yellow"><b>element</b></font>.innerText).toBe('5');
+        });
+    });
+})</code></pre>
+                </td>
+                <td valign='top'>                    
+                    <h3>With <font color="red" size="+2"><b>this</b></font> (no need to declare the variables outside  <br/>like with the"without" version)</h3>                    
+                    <pre class="my-note" style="background-color: gray; color: white"><code>describe('main.js', function() {
+  ...
+
+  describe('updateResult()', function() {
+    beforeAll(function() {
+      const element = document.createElement('div');
+      element.setAttribute('id', 'result');
+      document.body.appendChild(element);
+
+      <font color="yellow"><b>this.element</b></font> = element;
+    });
+
+    afterAll(function() {
+      document.body.removeChild(<font color="yellow"><b>this.element</b></font>);
+    });
+
+    it('adds result to DOM element', function() {
+      updateResult('5');
+
+      // <font color="yellow"><b>this.element</b></font> could be used here
+      expect(<font color="yellow"><b>this.element</b></font>.innerText).toBe('5');
+    });
+  });
+});</code></pre>
+                <div class="my-note" style="background-color: #bebcbc;" ><font color="red"><b><u>Note:</u></b></font> <font color="yellow"><b>this.element</b></font> could be named <font color="yellow"><b>this.something</b></font>, etc. <br/> (to use it, we need to use the same name)</div>
+                </td>
+            </tr></table>
+        </div>
+    </div>
+    
+</body>
+</html>

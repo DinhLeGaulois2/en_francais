@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 7 - Test Reports and Continuous Integration (CI)</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Section 7 - Test Reports and Continuous Integration (CI)</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+    <div class="my-note-dark">
+        <div class="my-note">
+            <h3>Why <font color="red">Karma</font>?</h3>
+            <p align="center"><img src="../section7/img/why karma.jpg"/></p>
+        </div>
+    </div>
+
+    <div class="my-note">
+        <h3>Installing dependencies</h3>
+        <p>We are no longer need to create the "<b>lib</b>" (nor the "<b>spec-runner.html</b>" file) manually anymore. We are going to do it by installing its dependencies, using NPM...</p>
+        <p class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">npm i <font color="red"><b>karma</b> <b>jasmine-core</b> <b>karma-jasmine</b> <b>karma-jasmine-matchers</b></font> --save-dev</font></p>
+        <p>The "<b><a href="../../code/7. Test reports and continuous integration/end/package.json" target='_blank'>package.json</a></b>"</p>
+        <pre class="my-note-dark"><code>{
+  ...
+  "scripts": {
+    "test": "<font color="blue"><b>karma start</b></font>"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.4",
+    "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.2",
+    "karma-jasmine": "^1.1.2",
+    "karma-jasmine-matchers": "^3.8.3",
+  },
+  "dependencies": {}
+}</code></pre>
+    </div>
+
+    <div class="my-note">
+        <h3>Karma runner</h3>
+        <p>We need to configure Karma by creating the "<b><a href="../../code/7. Test reports and continuous integration/end/karma.conf.js" target='_blank'>karma.conf.js</a></b>" with</p>
+        <pre class="my-note-dark"><code>module.exports = function (config) {
+  config.set({
+    frameworks: ['jasmine', 'jasmine-matchers'],
+    files: [
+      "./custom-matchers.js",
+      '*.js',
+      '*.spec.js'
+    ],
+    plugins: [
+      'karma-jasmine',
+      'karma-jasmine-matchers',
+      'karma-coverage'
+    ],
+    reporters: ['dots'],
+    colors: true,
+    singleRun: true,
+  })
+};</code></pre>
+        <p>To run <b>Karma</b></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/run karma with browser.jpg"/></p>
+        <div class="my-note-dark">
+            <p><font color="red"><b><u>Problem:</u></b></font> it's boring to have to click on the link (which shows - almost - nothing. Just to allow to execute the tests in the console).</p>
+            <p><b><u><font color="red">Solution:</font></u></b> use the "<b><font color="cyan">Headless browser</font></b>".</p>
+        </div>
+    </div>
+
+    <div class="my-note">
+        <h3>Headless browser</h3>
+        <p>What is a headless browser? A headless browser is a type of software that can access webpages but 
+            does not show them to the user and can pipe the content of the webpages to another program. Unlike 
+            a normal browser, nothing will appear on the screen when you start up a headless browser, since the 
+            programs run at the backend.</p>
+        <p>We have to installe two packages: <font color="red"><b>puppeteer</b></font> (for '<i>headless browser</i>') and <font color="red"><b>karma-chrome-launcher</b></font></p>
+        <div class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i <font color="red"><b>puppeteer</b></font> <font color="red"><b>karma-chrome-launcher</b></font> --save-dev</div>
+        <p>Then, we need to include it into the "<b><a href="../../code/7. Test reports and continuous integration/end/karma.conf.js" target='_blank'>karma.conf.js</a></b>" file</p>
+        <pre class="my-note-dark"><code>module.exports = function (config) {
+  config.set({
+    frameworks: ['jasmine', 'jasmine-matchers'],
+    files: [
+      "./custom-matchers.js",
+      '*.js',
+      '*.spec.js'
+    ],
+    plugins: [
+      'karma-jasmine',
+      'karma-jasmine-matchers',
+      '<font color="red"><b>karma-chrome-launcher</b></font>',
+      'karma-coverage'
+    ],
+    reporters: ['dots'],
+    colors: true,
+    browsers: ['<font color="red"><b>ChromeHeadless</b></font>'],
+    singleRun: true,
+  })
+};</code></pre>
+    </div>
+
+    <div class="my-note">
+        <h3>Coverage reports</h3>
+        
+        <p>Let install <font color="red"><b>Istanbul</b></font>: Istanbul instruments your ES5 and ES2015+ JavaScript code <b><u>with line counters</u></b>, so that you can track how well your unit-tests exercise your codebase.</p>
+        <div class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i <font color="red"><b>istanbul</b></font> --save-dev</div>
+        <p>We need to Install <font color="red"><b>karma-cli</b></font> if you want to be able to use karma in your command line.</p>
+        <div class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i <font color="red"><b>karma-cli</b></font> --save-dev</div>
+        <p>Generate code coverage using <font color="red"><b>Istanbul</b></font>, we need to install</p>
+        <div class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i <font color="red"><b>karma-coverage</b></font> --save-dev</div>
+        
+        <p>Then, we need to include it into the "<b><a href="../../code/7. Test reports and continuous integration/end/karma.conf.js" target='_blank'>karma.conf.js</a></b>" file</p>
+        <pre class="my-note-dark"><code>module.exports = function (config) {
+  config.set({
+    frameworks: ['jasmine', 'jasmine-matchers'],<font color="yellow"><b>
+    preprocessors: {
+      '*.js': ['coverage']
+    },</b></font>
+    files: [
+      "./custom-matchers.js",
+      '*.js',
+      '*.spec.js'
+    ],
+    plugins: [
+      'karma-jasmine',
+      'karma-jasmine-matchers',
+      'karma-chrome-launcher',
+      'karma-coverage'
+    ],
+    // 'dot': start, 'coverage': end
+    reporters: ['dots', '<font color="yellow"><b>coverage</b></font>'],
+    colors: true,
+    browsers: ['ChromeHeadless'],
+    singleRun: true,<font color="yellow"><b>
+    coverageReporter: { // the output
+      dir: 'coverage/',
+      reporters: [
+        {type: 'html', subdir: 'html'}
+      ]
+    }</b></font>
+  })
+};</code></pre>
+        <p>To launch the test:</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/launching karma.jpg"/></p>
+        <p>We could see the report in "<font color="red"><b>coverage/html/index.html</b></font>", because, we configure (in the "<b><a href="../../code/7. Test reports and continuous integration/end/karma.conf.js" target='_blank'>karma.conf.js</a></b>"):</p>
+        <pre class="my-note-dark"><code>module.exports = function (config) {
+  config.set({
+    ...
+    coverageReporter: { // the output
+      dir: '<font color="red"><b>coverage/</b></font>',
+      ...
+    }
+  })
+};</code></pre>
+        <div class="my-note-dark"><font color="red"><b><u>Note:</u></b></font> if we have more than 90% of success, of all tests, than it's very good!</div>
+        <p>If we "forgot" to unit test some part, Karma will show us (parts with the background in "<span style="background-color: #eca3b0; padding: 0 5px"><b>pink</b></span>"):</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/not tested parts.jpg"/></p>
+    </div>
+
+    <div class="my-note">
+        <h3>Pushing to version control (we are using <b><a href="https://github.com/" target='_blank'>Github</a></b>)</h3>
+        <p>Let create a repository name "<b>jasmine-ci</b>" in your <b>Github</b> account. Then copy the link with <font color="blue"><b>https</b></font> or <font color="blue"><b>ssh</b></font> (the guide of the differences <a href="http://jr0cket.co.uk/2016/05/ssh-or-https-that-is-the-github-question.html" target='_blank'>here</a>)</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/repository link.jpg"/></p>
+        <p>On our console, under the root of our project ("<b><font color="red">simple calculator</font></b>")</p>
+        <ol type="1">
+            <li>Create an empty repository
+                <div class="my-note-dark">&nbsp;&nbsp;git init</div>
+            </li>
+            <li>Link our LOCAL repository to the REMOTE one (we are using the instructor's repository)
+                <div class="my-note-dark">&nbsp;&nbsp;git remote add origin git@github.com:juanlizaraz</div>
+            </li>
+            <li>Let "<b><font color="red">branch</font></b>" it
+                <div class="my-note-dark">&nbsp;&nbsp;git branch</div>
+            </li>
+            <li>Create "<b><font color="red">.gitignore</font></b>" to ignore "<b>coverage</b>" (the test report) and "<b>node_modules</b>" before to commit files
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/gitignore.jpg"/></p>
+            </li>
+            <li>Now, we could push our file to the REMOTE repository
+                <ul type="square">
+                    <li><div class="my-note-dark">&nbsp;&nbsp;git add .</div></li>
+                    <li><div class="my-note-dark">&nbsp;&nbsp;git commit -m "My CI commit"</div></li>
+                    <li><div class="my-note-dark">&nbsp;&nbsp;git push origin master</div></li>
+                </ul>
+            </li>
+        </ol>
+        <p>Now, everything is ready for our "<b><font color="red">Continuous Integration</font></b>" (<b>CI</b>) system...</p>        
+    </div>
+
+    <div class="my-note">
+        <h3>Connecting to "<b><font color="red">Continuous Integration</font></b>" (<b>CI</b>) system</h3>
+        <p>We are going to use "<b><a href="https://travis-ci.org/" target='_blank'>Travis CI</a></b>"</p>
+        <ul>
+            <li>"<b><font color="blue">Sign-in with Github</font></b>" ("<b><font color="blue">Sign Up</font></b>" if neccessary)</li>
+            <li>
+                <p>We are looking for our <font color="blue"><b>jasmine-ci</b></font> repository</p>
+                <div class="my-note-dark">&nbsp;&nbsp;<b>Profile</b> &rarr; <b>Legacy Services Integration</b> &rarr; <font color="blue"><b>jasmine-ci</b></font> &rarr; "<b>Activate reposository</b>"</div>
+                
+            </li>
+        </ul>
+        <p>From now, when we make changes in <font color="blue"><b>jasmine-ci</b></font>, we'll see information in the "<b><a href="https://travis-ci.org/" target='_blank'>Travis CI</a></b>" UI. But before that, we need to create a manifest file for "<b><a href="https://travis-ci.org/" target='_blank'>Travis CI</a></b>".</p>
+    </div>
+
+    <div class="my-note">
+        <h3>Configuring build</h3>
+        <p>We need to create the file "<b><font color="blue" size="+2">.travis.yml</font></b>" at the root of the project.</p>
+        <pre class="my-note-dark"><code>language: node_js
+node_js:
+  - "8.11"
+install:
+  - npm install
+script:
+  - npm test
+addons:
+  chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+before_script:
+    - "sudo chown root /opt/google/chrome/chrome-sandbox"
+    - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"</code></pre>
+        <p>Then, we are going to add the "<b><font color="blue" size="+2">.travis.yml</font></b>" file to our REMOTE repository</p>        
+        <ul type="square">
+            <li><div class="my-note-dark">&nbsp;&nbsp;git add .</div></li>
+            <li><div class="my-note-dark">&nbsp;&nbsp;git commit -m "Add travis config file"</div></li>
+            <li><div class="my-note-dark">&nbsp;&nbsp;git push origin master</div></li>
+        </ul>
+
+        <p>In the "<b><a href="https://travis-ci.org/" target='_blank'>Travis CI</a></b>" UI, to executing the tests (if not automatically triggered)</p>
+        <div class="my-note-dark">&nbsp;&nbsp;<b>jasmine-ci</b> &rarr; <b>Pull Requests</b> &rarr; More options &rarr; <b>Trigger build</b></div>
+        <p>Go to "<b>Current</b>"</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis_current.jpg"/></p>
+        <p>And wait (several minutes) until the tests are done. Then, we could see the log below it.</p>
+    </div>
+
+    <div class="my-note">
+        <h3>Build badge</h3>
+        <p>When the test finished, we could get a badge by clicking on</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis badge 1.jpg"/></p>
+        <p>We could select the format. Here, we are using "<b>Markdown</b>" to get the badge to put on our "<b><a href="../../code/7. Test reports and continuous integration/end/README.md" target='_blank'>README.md</a></b>"</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis badge 2.jpg"/></p>
+        <p>After pushing the "<b><a href="../../code/7. Test reports and continuous integration/end/README.md" target='_blank'>README.md</a></b>" file into the REMOTE repository, we have</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis badge 3.jpg"/></p>
+        <div class="my-note-dark"></div>
+    </div>
+</body>
+</html>

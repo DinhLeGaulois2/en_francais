@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 3 - Matchers</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Section 3 - Matchers</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+
+    <div class="my-note" style="background-color: black; color:white; text-align: center;">(code: "<font color="#00fe02" size="+2"><b>./code/3. Matchers/end/*</b></font>")</div>
+    <hr/>
+    
+    <div class="my-note">
+        <p>(<a href="https://jasmine.github.io/pages/docs_home.html" target="_blank">Jasmine</a> &rarr; versions &rarr; matchers , with some <a href="https://jasmine.github.io/api/3.5/matchers" target="_blank">explanations</a>...)</p>
+        
+        <!--  -->
+        <div class="my-note" style="background-color: #e1e0d6;">
+            <table align="center" style="background-color: black; color: white; font-size: 1.2rem;" border="1">
+                <tr>
+                    <th><font color="cyan" size="+3"><b>Matcher</b></font></th>
+                    <th><font color="cyan" size="+3"><b>Description</b></font></th>
+                    <th><font color="cyan" size="+3"><b>Example</b></font></th>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toBe</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be === to the expected value.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(thing).<font color="red"><b>toBe</b></font>(realThing);</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toEqual</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be equal to the expected, <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using deep equality comparison.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(bigObject).<font color="red"><b>toEqual</b></font>({"foo": ['bar', 'baz']});</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toBeTruthy/toBeFalsy</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be truthy.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(thing).<font color="red"><b>toBeTruthy</b></font>();</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>Negating matchers</b></font></td>
+                    <td valign="top" style="padding: 0 10px">Invert the matcher following this expect</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(something).<font color="red"><b>not.toBe</b></font>(true);</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toBeDefined/toBeUndefined</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be undefined.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(result).<font color="red"><b>toBeUndefined</b></font>():</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toBeNull</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be null.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(result).<font color="red"><b>toBeNull</b></font>();</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toContain</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to contain a specific value.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(array).<font color="red"><b>toContain</b></font>(anElement);<br/>
+<font color="cyan"><b>expect</b></font>(string).<font color="red"><b>toContain</b></font>(substring);</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toBeNaN</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to be NaN (Not a Number).</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(thing).<font color="red"><b>toBeNaN</b></font>();</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toThrow/toThrowError</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> a function to throw something.</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>(function() { return 'things'; }).<font color="red"><b>toThrow</b></font>('foo');<br/>
+<font color="cyan"><b>expect</b></font>(function() { return 'stuff'; }).<font color="red"><b>toThrow</b></font>();</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>toMatch</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> the actual value to match a regular expression</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>("my string").<font color="red"><b>toMatch</b></font>(/string$/);<br/>
+<font color="cyan"><b>expect</b></font>("other string").<font color="red"><b>toMatch</b></font>("her");</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>Other matchers</b></font></td>
+                    <td valign="top" style="padding: 0 10px">(Full list: <a href="https://jasmine.github.io/pages/docs_home.html" target="_blank">Jasmine</a> &rarr; versions &rarr; matchers)</td>
+                    <td valign="top" style="padding: 0 10px"></td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>Match anything</b></font></td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font> to match <b>anything</b><br/>(not working with "<b>null</b>" nor "<b>undefined</b>)</td>
+                    <td valign="top" style="padding: 0 10px"><font color="cyan"><b>expect</b></font>("my string").<font color="cyan"><b>toEqual</b></font>(<b>jasmine</b>.<font color="red"><b>anything</b></font>());</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>Custom matchers</b></font></td>
+                    <td valign="top" style="padding: 0 10px">
+                        <p>Let create "<b><a href="../../code/3. Matchers/end/custom-matchers.js" target='_blank'>custom-matchers.js</a></b>" (the general structure of customed matchers)</p>
+                        <pre class="my-note"><code>const <b><a href="../../code/3. Matchers/end/custom-matchers.js" target='_blank'>custom-matchers.js</a></b> = {
+    <font color="orange">toBeCalculator</font>: function () {
+        return {
+            compare: function (actual) {
+                const result = {
+                    pass: actual instanceof Calculator,
+                    message: ''
+                }
+
+                if(result.pass){
+                    // in case of "<font color="red" size="+2"><b>not</b></font>": for example, 
+                    // "<b>expect(2).<font color="red" size="+2">not</font>.<font color="orange">toBeCalculator()</font></b>"
+                    result.message = 'Expected ' + actual + 
+                        ' not to be instance of Calculator'
+                } else{
+                    result.message = 'Expected ' + actual + 
+                        ' to be instance of Calculator'
+                }                
+
+                return result
+            }
+        }
+    }
+}</code></pre>
+                        <div class="my-note">
+                            <font color="red"><b><u>Important:</u></b></font> we need to <b><u>register</u></b> our customed matcher to <b>Jasmine</b></font>. In "<b><a href="../../code/3. Matchers/end/spec-runner.html" target="_blank">spec-runner.html</a></b>" and add:
+                            <p class="my-note" style="background-color: black; color: cyan">&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="<font color="red">custom-matchers.js</font>"&gt;&lt;/script&gt;</p>
+                        </div>
+                    </td>
+                    <td valign="top" style="padding: 0 10px"><pre class="my-note" style="background-color: white;""><code>it('can be instantiated', function () {
+    <font color="blue"><b>jasmine.addMatchers(<b><a href="../../code/3. Matchers/end/custom-matchers.js" target='_blank'>custom-matchers.js</a></b>);</b></font>
+
+    const calculator = new Calculator();
+
+    // the <font color="orange"><b>toBeCalculator</b></font> is our customed matcher ...
+    expect(calculator).<font color="orange" title="our customed matcher"><b>toBeCalculator</b></font>();
+
+    expect(calculator).<font color="red" size="+2"><b>not</b></font>.<font color="orange" title="our customed matcher"><b>toBeCalculator</b></font>();
+})</code></pre></td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0 10px"><font color="red" size="+2"><b>Third party matchers</b></font></td>
+                    <td valign="top" style="padding: 0 10px">
+                        <div class="my-note">
+                            Good source <a href="https://github.com/JamieMason/Jasmine-Matchers" target="_blank">here</a>. To get the file <a href="https://devhub.io/repos/JamieMason-Jasmine-Matchers#matchers" target='_blank'><b>here</b></a> (right, below)<br/>
+                            <div class="my-note" style="background-color: black; color: cyan">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<b>Releases</b>" &rarr; "XXXX.zip" &rarr; (unzipped) &rarr; <b>JamieMasonYYY/dist/<font color="red">jasmine-matchers.js</font></b>" ...
+                            </div>
+                            <p>Copy the "<b><font color="red">jasmine-matchers.js</font></b>" into the "<b>lib</b>" folder</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/third party matchers.jpg"/> </p>
+                            <p>The file must be declare in "<b><a href="../../code/3. Matchers/end/spec-runner.html" target='_blank'>spec-runner.html</a></b>"...</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/into spec-runner.jpg"/> </p>
+                        </div>
+                    </td>
+                    <td valign="top" style="padding: 0 10px"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

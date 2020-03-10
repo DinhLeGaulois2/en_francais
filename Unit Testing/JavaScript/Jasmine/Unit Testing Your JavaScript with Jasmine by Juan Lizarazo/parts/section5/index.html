@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5 - Spying on Your Code (Stubs / Test Doubles)</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/style/style.css">
+</head>
+<body>
+    <h1 align="center" class="title">Section 5 - Spying on Your Code (Stubs / Test Doubles)</h1>
+    <h3 align="center">[<a href="../../index.html">Home</a>]</h3>
+
+    <div class="my-note" style="background-color: black; color:white; text-align: center;">(code: "<font color="#00fe02" size="+2"><b>./code/5. Spying on your code/end/*</b></font>")</div>
+    <br/>
+
+    <div class="my-note">
+        <p>If we have several files to tests with close dependencies between them. If one of them failed, ALL could be failed. Solution? Isolate the dependencies!</p>
+        <p><font color="red" size="+2"><b>Spies</b></font> create test doubles and help us isolate dependencies for true unit testing!</p>
+
+        <div class="my-note-dark">
+            <h3><font color="cyan">Test doubles</font></h3>
+            <ul>
+                <li>A test double is an object that can stand in for a real object in a test, similar to how a stunt double stands in for an actor in a movie.</li>
+                <li>Jasmine has test double functions called <font color="yellow" size="+2">spies</font></li>
+                <li>A spy can stub any function and tracks calls to it and all arguments</li>
+                <li>A spy <b><u>only exists</u></b> in the <i><font color="cyan">describe</font></i> or <font color="cyan"><i>it</i></font> block in which it is defined, and will <b><u>be removed</u></b> after EACH spec</li>
+                <li>There are special matchers for interacting with spies (there are more):
+                    <ul>
+                        <li><font color="green"><b>toHaveBeenCalled</b></font></li>
+                        <li><font color="green"><b>toHaveBeenCalledWith</b></font></li>
+                        <li><font color="green"><b>toHaveBeenCalledTimes</b></font></li>
+                    </ul>
+                    <h3>Example</h3>
+                    <table align="center" border="1"><tr>
+                        <td valign="top" style="margin: 0 10px"><h3><a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a></h3>
+<pre class="my-note" style="margin: 0 5px"><code>function calculate(inputValue) {
+    // if: inputValue = 5*9
+    const expression = /\+|\-|\*|\//;
+    // then: numbers = ["5", "9"]
+    const numbers = inputValue.split(expression);
+
+    const numberA = parseInt(numbers[0]);
+    const numberB = parseInt(numbers[1]);
+
+    const operation = inputValue.match(expression);
+
+    // not "+" nor "-" nor "/" nor "*" or "NaN"
+    <div class="my-note-dark">
+    <font color="cyan">// We are spying on this part...</font>
+    if (Number.isNaN(numberA)    // <font color="blue"><b>first number</b></font>
+        || Number.isNaN(numberB) // <font color="blue"><b>second number</b></font>
+        || operation === null)   // <font color="blue"><b>operation</b></font>
+    {
+        <font color="orange"><b>updateResult</b></font>('Expression not recognized');
+        return;
+    }</div>
+
+    ...
+}
+
+function <font color="orange"><b>updateResult</b></font>(result) {
+    const element = document.getElementById('result');
+
+    if (element) {
+        element.innerText = result;
+    }
+}</code></pre>
+                        </td>
+                        <td valign="top"><h3><a href="../../code/5. Spying on your code/end/main.spec.js" target="_blank">main.spec.js</a></h3>
+<pre class="my-note" style="margin: 0 5px"><code>describe('main.js', function() {
+  describe('calculate()', function() {
+    it('validates expression when <font color="blue" size="+2"><b>first number</b></font> is invalid', function() {
+      // <font color="magenta"><b>window</b></font>, because, '<font color="orange"><b>updateResult</b></font>' is a function in <a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a>
+      spyOn(<font color="magenta"><b>window</b></font>, '<font color="orange"><b>updateResult</b></font>').and.<a href="https://en.wikipedia.org/wiki/Test_stub" target='_blank' title="article from Wikipedia">stub</a>();
+
+      calculate('a+3');
+
+      expect(window.<font color="orange"><b>updateResult</b></font>).<font color="green"><b>toHaveBeenCalled</b></font>();
+      expect(window.<font color="orange"><b>updateResult</b></font>).<font color="green"><b>toHaveBeenCalledWith</b></font>('Expression not recognized');
+      expect(window.<font color="orange"><b>updateResult</b></font>).<font color="green"><b>toHaveBeenCalledTimes</b></font>(1);
+    });
+
+    it('validates expression when <font color="blue" size="+2"><b>second number</b></font> is invalid', function() {
+      spyOn(window, '<font color="orange"><b>updateResult</b></font>');
+
+      calculate('3+a');
+
+      expect(window.<font color="orange"><b>updateResult</b></font>).<font color="green"><b>toHaveBeenCalled</b></font>();
+    });
+
+    it('validates expression when <font color="blue" size="+2"><b>operation</b></font> is invalid', function() {
+      spyOn(window, '<font color="orange"><b>updateResult</b></font>');
+
+      calculate('2_3');
+
+      expect(window.<font color="orange"><b>updateResult</b></font>).<font color="green"><b>toHaveBeenCalled</b></font>();
+    });
+  });
+
+  ...
+});</code></pre>
+                        </td>
+                    </tr></table>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3>Spying on <font color="red">prototypes</font></h3>
+            <p>In <a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a>, we want to test the functions:</p>
+            <pre class="my-note"><code>const calculator = new Calculator();
+calculator.<font color="red" size="+2"><b>add</b></font>(numberA);
+
+let result;
+switch (operation[0]) {
+    case '+':
+        result = calculator.<font color="red" size="+2"><b>add</b></font>(numberB)
+        break;
+    case '-':
+        result = calculator.<font color="red" size="+2"><b>substract</b></font>(numberB)
+        break;
+    case '*':
+        result = calculator.<font color="red" size="+2"><b>multiply</b></font>(numberB)
+        break;
+    case '/':
+        result = calculator.<font color="red" size="+2"><b>divide</b></font>(numberB)
+        break;
+}</code></pre>
+            <div class="my-note">
+                <p><font color="blue"><b><u>Problem:</u></b></font> we want to create test doubles (with <b><u>spies</u></b>) and help us <b><u>isolate dependencies</u></b> for true unit testing (between <a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a> and <a href="../../code/5. Spying on your code/end/calculator.js" target="_blank">calculator.js</a>)</p>
+                <p><font color="blue"><b><u>Solution:</u></b></font> instead of testing an instance of the <a href="../../code/5. Spying on your code/end/calculator.js" target="_blank">calculator.js</a> (kind of: "<i>const aCalculInstance = new Calculator()</i>"), we test the <b><u>class</u></b> itself:</p>
+                <pre class="my-note-dark"><code>describe('main.js', function () {
+  describe('calculate()', function () {
+    it('calls add', function () {
+      // "<b><font color="red" size="+2">Calculator</font></b>" is the class itself. "<b><font color="red" size="+2">Calculator</font>.prototype</b>"
+      // allow us to get access to its functions
+      spyOn(<b><font color="red" size="+2">Calculator</font></b>.prototype, 'add');
+
+      calculate('3+4');
+
+      expect(spy).<font color="green"><b>toHaveBeenCalledTimes</b></font>(2);
+      expect(spy).<font color="green"><b>toHaveBeenCalledWith</b></font>(3);
+      expect(spy).<font color="green"><b>toHaveBeenCalledWith</b></font>(4);
+    });
+  });
+  ...
+});
+</code></pre>
+            </div>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3><font color="red">callThrough</font> (avoid to use this: don't execute a native "thing")</h3>
+            <div class="my-note">
+                <p>Now, we want to test the <font color="orange"><b>updateResult</b></font> (which contains the result of the execution of <a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a>)</p>
+                <pre class='my-note' style="background-color: black; color: white"><code>function calculate(inputValue) { 
+    ...
+    let result;
+    switch (operation[0]) {
+        case '+':
+            result = calculator.add(numberB)
+            break;
+        case '-':
+            result = calculator.substract(numberB)
+            break;
+        case '*':
+            result = calculator.multiply(numberB)
+            break;
+        case '/':
+            result = calculator.divide(numberB)
+            break;
+    }
+
+    <font color="orange"><b>updateResult</b></font>(result);
+}</code></pre>
+                <p><font color="blue"><b><u>Problem:</u></b></font> we don't usually execute a native function (like "<b>split</b>" of <i>String</i>, for example). However, 
+                sometimes we need to. In our case, in our "<b>spy</b>" function, we need to "execute" the <a href="../../code/5. Spying on your code/end/calculator.js" target="_blank">calculator.js</a> 
+                class to get a result for "<font color="orange"><b>updateResult</b></font>"</p>
+                <p><font color="blue"><b><u>Solution:</u></b></font> by using <font color="red"><b>and.callThrough</b></font></p>
+                <pre class='my-note' style="background-color: black; color: white"><code>describe('main.js', function () {
+  describe('calculate()', function () {
+    ...
+    it('calls <font color="orange"><b>updateResult</b></font> (example using <font color="red"><b>and.callThrough</b></font>)', function() {
+      spyOn(window, '<font color="orange"><b>updateResult</b></font>');
+      spyOn(Calculator.prototype, 'multiply').<font color="red"><b>and.callThrough</b></font>();
+
+      calculate('5*5');
+
+      // the final call, to get the result of the execution of "main.js"
+      expect(window.<font color="orange"><b>updateResult</b></font>).toHaveBeenCalled();
+      expect(window.<font color="orange"><b>updateResult</b></font>).toHaveBeenCalledWith(25);
+    });    
+  });
+});
+</code></pre>
+            </div>
+            
+        </div>
+        
+        <div class="my-note-dark">
+            <h3><font color="red">callFake</font> (very rare to use this in Unit Testing)</h3>
+            <div class="my-note">
+                <p>(<a href="https://medium.com/@cinish/jasmine-spying-using-callfake-23625310bacf" target='_blank'>source</a>)</p>
+                <p>Jasmine spying using <font color="red">callFake</font></p>
+                <ol type="1">
+                    <li>All the “things” that have been injected into a guard/component through the constructor parameters are available to the guard using <font color="red"><b>this.injectedServiceOne</b></font>, <font color="red"><b>this.injectedServiceTwo</b></font> etc.</li>
+
+                    <li>The same exact access is available on the test as we are using the real class in the test as well.</li>
+                    <li>This injected service can then be made into a spy using typescript type assertion: (<font color="orange"><b>guard.roleService.get as jasmine.Spy</b></font>)</li>
+
+                    <li>
+                        <p>Now that we got the spy for the method we are interested in, we are able to exert jasmine influences on it. We can make it call a fake function instead of the real method.</p>
+                    </li>
+                </ol>
+
+                <p>Our test (in <a href="../../code/5. Spying on your code/end/main.spec.js" target="_blank">main.spec.js</a>)</p>              
+                <pre class='my-note' style="background-color: black; color: white"><code>it('calls updateResult (example using <font color="red"><b>and.callFake</b></font>)', function() {
+  spyOn(window, 'updateResult');
+
+  spyOn(Calculator.prototype, 'multiply').<font color="red"><b>and.callFake</b></font>(function (number) {
+    // "Faking" an answer of the "multiply" function
+    return '<font color="yellow">it works</font>';
+  });
+
+  calculate('5*5');
+  expect(window.updateResult).toHaveBeenCalled();
+
+  // must be the same than in calFake
+  // ATTENTION: we don't do this normally. Because,
+  // it's just like we test our spy function itself,
+  // which is not the purpose of the "spies"
+  expect(window.updateResult).toHaveBeenCalledWith('<font color="yellow">it works</font>');
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3><font color="red">returnValue/returnValues</font></h3>
+            <div class="my-note">
+                <h3><font color="red">returnValue</font></h3>
+                <p>To impose a specific value, whatever could be the parameters of the function...</p>
+                <pre class='my-note' style="background-color: black; color: white"><code>it('calls updateResult (example using and.<font color="red">returnValue</font>)', function() {
+  spyOn(window, 'updateResult');
+  spyOn(Calculator.prototype, 'multiply').and.<font color="red">returnValue</font>('whatever [multiply] return');
+
+  calculate('5*5');
+  expect(window.updateResult).toHaveBeenCalled();
+  expect(window.updateResult).toHaveBeenCalledWith('whatever [multiply] return');
+}); </code></pre>
+            </div>
+            
+            <div class="my-note">
+                <h3><font color="red">returnValues</font></h3>
+                <pre class='my-note' style="background-color: black; color: white"><code>it('calls updateResult (example using and.<font color="red">returnValues</font>)', function() {
+  spyOn(window, 'updateResult');
+
+  // the parameter is built: (firstCall, secondCall, thirdCall, etc...)
+  // first parameter is <i>null</i> because we don't care about the value of the first call...
+  spyOn(Calculator.prototype, 'add').and.<font color="red">returnValues</font>(null, 'whatever [add] returns');
+
+  calculate('5+5');
+  expect(window.updateResult).toHaveBeenCalled();
+  expect(window.updateResult).toHaveBeenCalledWith('whatever [add] returns');
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="my-note-dark">            
+            <h3>Spying on <font color="red">throwError</font></h3>
+            <p>As we didn't setup an error handler in the <a href="../../code/5. Spying on your code/end/main.js" target="_blank">main.js</a> file: we could not test it. So, we test for 'does not handle errors'...</p>
+            <pre class="my-note"><code>it('does not handle errors', function () {
+  spyOn(Calculator.prototype, 'multiply').and.<font color="red">throwError</font>('some error');
+
+  expect(function () {
+    calculate('5*5');
+  }).to<font color="red">throwError</font>('some error');
+})</code></pre>
+        </div>
+        
+        <div class="my-note-dark">
+            <h3 id="getter">Using <font color="red">getters</font> [about 'version']</h3>
+            <p>Following the reference docs (<a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>here</a>), we don't have a "<font color='red'><b>getter</b></font>" (nor "<a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/set" target='_blank'>setter</a>") in our code. Let set up one ...</p>
+            <p>In our "<b><a href="../../code/5. Spying on your code/end/calculator.js" target='_blank'>calculator.js</a></b>", we add</p>
+            <pre class="my-note"><code>Object.defineProperty(Calculator.prototype, 'version', {
+    <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>get</a>: function() {
+        return '0.1';
+    },
+    enumerable: true,
+    configurable: true
+})</code></pre>
+            <p id="callVersion">Let use our newly created <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>getter</a> in <b>simple-calculator.html</b></p>
+            <pre class="my-note"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Simple calculator&lt;/title&gt;
+	...
+    <div class="my-note-dark">
+    &lt;script&gt;
+        window.onload = function () {
+            showVersion()
+        }
+    &lt;/script&gt;</div>
+&lt;/head&gt;
+
+&lt;body class="body"&gt;
+    &lt;h1 class="title"&gt;Simple calculator&lt;/h1&gt;
+    ...
+	<div class="my-note-dark">
+	<font color="cyan">
+    // the result of our getter will be showed in the "<b>span</b>" ...</font>
+    &lt;div class="version"&gt;version &lt;<font color="cyan">span</font> id="version"&gt;&lt;/span&gt;&lt;/div&gt;
+    </div>
+&lt;/body&gt; 
+
+&lt;/html&gt;</code></pre></div>        
+        <div class="my-note-dark">
+            <h3><font color="red">spyOnProperty</font> [about 'version']</h3>
+            <div class="my-note">
+                <div class="my-note" style="background-color: #bdcad5;">
+                    <p>A JavaScript <font color="blue"><b>property</b></font> is a characteristic of an object, often describing attributes associated with a data structure.</p>
+
+                    <p>There are two kinds of properties: </p>
+                    <ul>
+                        <li>Instance properties hold data that are specific to a given object instance. </li>
+                        <li>Static properties hold data that are shared among all object instances.</li>
+                    </ul>
+
+                    <p>A property has a name (a string) and a value (primitive, method, or object reference). Note that when we say that "a property holds an object", that is shorthand for "a property holds an object reference".  This distinction matters because the original referenced object remains unchanged when you change the property's value.</p>
+                </div>
+                <p>Let <span style="background-color: black">&nbsp;<font color="yellow">spy</font>&nbsp;</span> on our <font color="blue"><b>property</b></font> (the <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>getter</a>)</p>
+                <pre class="my-note-dark"><code>describe('showVersion()', function () {
+  it('calls calculator.version', function () {
+    spyOn(document, 'getElementById').and.returnValue({
+      innerText: null // set a initial value
+    })
+
+    // the "<font color='red'><b>get</b></font>" is our <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/get" target='_blank'>getter</a>
+    // if we have a "<a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/functions/set" target='_blank'>setter</a>", it would be "<font color='red'><b>set</b></font>" instead
+    const <font color="yellow"><b>spy</b></font> = <font color="red">spyOnProperty</font>(Calculator.prototype, 'version', '<font color='red'><b>get</b></font>');
+
+    showVersion();
+    // expect(/* <font color="yellow"><b>spy</b></font> */).toHaveBeenCalled()
+    expect(<font color="yellow"><b>spy</b></font>).toHaveBeenCalled()
+  })
+})</code></pre>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</body>
+</html>
+
+
+
