@@ -101,11 +101,11 @@
                 }
 
                 if(result.pass){
-                    // in case of "<font color="red" size="+2"><b>not</b></font>": for example, 
-                    // "<b>expect(2).<font color="red" size="+2">not</font>.<font color="orange">toBeCalculator()</font></b>"
+                    // in case of "<font color="red" size="+2"><b>not</b></font>" (negation of): for example, 
+                    // example: "<b>expect(2).<font color="red" size="+2">not</font>.<font color="orange">toBeCalculator()</font></b>"
                     result.message = 'Expected ' + actual + 
                         ' not to be instance of Calculator'
-                } else{
+                } else{ // when Error...
                     result.message = 'Expected ' + actual + 
                         ' to be instance of Calculator'
                 }                
@@ -138,7 +138,8 @@
                             Good source <a href="https://github.com/JamieMason/Jasmine-Matchers" target="_blank">here</a>. To get the file <a href="https://devhub.io/repos/JamieMason-Jasmine-Matchers#matchers" target='_blank'><b>here</b></a> (right, below)<br/>
                             <div class="my-note" style="background-color: black; color: cyan">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<b>Releases</b>" &rarr; "XXXX.zip" &rarr; (unzipped) &rarr; <b>JamieMasonYYY/dist/<font color="red">jasmine-matchers.js</font></b>" ...
-                            </div>
+                            </div>                            
+                            <div class="my-note-dark"><b><font color="red"><u>Note:</u></font></b> it's better to install the "<b><a href="https://github.com/JamieMason/Jasmine-Matchers" target='_blank'>npm</a></b>" parkage instead...</div>
                             <p>Copy the "<b><font color="red">jasmine-matchers.js</font></b>" into the "<b>lib</b>" folder</p>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/third party matchers.jpg"/> </p>
                             <p>The file must be declare in "<b><a href="../../code/3. Matchers/end/spec-runner.html" target='_blank'>spec-runner.html</a></b>"...</p>
@@ -150,6 +151,8 @@
             </table>
         </div>
     </div>
+
+    <div class="my-note-dark"><p style="font-size: 2rem; color: cyan; text-align: center;"><a href="../section2/index.html">Previous</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="../section4/index.html">Next</a></p></div>
     
 </body>
 </html>
