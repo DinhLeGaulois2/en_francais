@@ -16,7 +16,7 @@
         As that is an <font color="red"><b>asynchronous</b></font>, process, we need to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target='_blank'>promise</a>...</p>
 
         <p>In our <a href="../../code/6. Testing asynchronous code/end/calculator.js" target='_blank'>calculator.js</a>, we set:</p>
-        <pre class='my-note-dark'><code>Object.defineProperty(Calculator.prototype, 'version', {
+        <pre class='my-note-dark'><code>Object.defineProperty(Calculator.prototype, '<font color="red"><b>version</b></font>', {
     get: function() {        
         return fetch('https://gist.githubusercontent.com/juanlizarazo
                 /4b2d229ba483ca13b1a6d7bf3079dc8b/raw
