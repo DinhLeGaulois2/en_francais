@@ -74,7 +74,7 @@
             does not show them to the user and can pipe the content of the webpages to another program. Unlike 
             a normal browser, nothing will appear on the screen when you start up a headless browser, since the 
             programs run at the backend.</p>
-        <p>We have to installe two packages: <font color="red"><b>puppeteer</b></font> (for '<i>headless browser</i>') and <font color="red"><b>karma-chrome-launcher</b></font></p>
+        <p>We have to install two packages: <font color="red"><b>puppeteer</b></font> (for '<i>headless browser</i>') and <font color="red"><b>karma-chrome-launcher</b></font></p>
         <div class="my-note-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm i <font color="red"><b>puppeteer</b></font> <font color="red"><b>karma-chrome-launcher</b></font> --save-dev</div>
         <p>Then, we need to include it into the "<b><a href="../../code/7. Test reports and continuous integration/end/karma.conf.js" target='_blank'>karma.conf.js</a></b>" file</p>
         <pre class="my-note-dark"><code>module.exports = function (config) {
@@ -153,7 +153,7 @@
   })
 };</code></pre>
         <div class="my-note-dark"><font color="red"><b><u>Note:</u></b></font> if we have more than 90% of success, of all tests, than it's very good!</div>
-        <p>If we "forgot" to unit test some part, Karma will show us (parts with the background in "<span style="background-color: #eca3b0; padding: 0 5px"><b>pink</b></span>"):</p>
+        <p>If we "forgot" to write unit test some part, Karma will show us (parts with the background in "<span style="background-color: #eca3b0; padding: 0 5px"><b>pink</b></span>"):</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/not tested parts.jpg"/></p>
     </div>
 
@@ -188,12 +188,15 @@
 
     <div class="my-note">
         <h3>Connecting to "<b><font color="red">Continuous Integration</font></b>" (<b>CI</b>) system</h3>
+        <div class="my-note-dark">
+          <font color="red"><b><u>Definition:</u></b></font> In software engineering, continuous integration (CI) is the practice of merging all developers' working copies to a shared mainline several times a day.
+        </div>
         <p>We are going to use "<b><a href="https://travis-ci.org/" target='_blank'>Travis CI</a></b>"</p>
         <ul>
             <li>"<b><font color="blue">Sign-in with Github</font></b>" ("<b><font color="blue">Sign Up</font></b>" if neccessary)</li>
             <li>
                 <p>We are looking for our <font color="blue"><b>jasmine-ci</b></font> repository</p>
-                <div class="my-note-dark">&nbsp;&nbsp;<b>Profile</b> &rarr; <b>Legacy Services Integration</b> &rarr; <font color="blue"><b>jasmine-ci</b></font> &rarr; "<b>Activate reposository</b>"</div>
+                <div class="my-note-dark">&nbsp;&nbsp;<b>Profile</b> &rarr; <b>Legacy Services Integration</b> &rarr; <font color="blue"><b>jasmine-ci</b></font> &rarr; "<b>Activate repository</b>"</div>
                 
             </li>
         </ul>
@@ -233,7 +236,7 @@ before_script:
 
     <div class="my-note">
         <h3>Build badge</h3>
-        <p>When the test finished, we could get a badge by clicking on</p>
+        <p>We could get a badge, linking to <b>Trevis</b> build, by clicking on</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis badge 1.jpg"/></p>
         <p>We could select the format. Here, we are using "<b>Markdown</b>" to get the badge to put on our "<b><a href="../../code/7. Test reports and continuous integration/end/README.md" target='_blank'>README.md</a></b>"</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/travis badge 2.jpg"/></p>
