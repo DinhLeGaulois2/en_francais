@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Find a Path to a Given Node</title>
+	<style>
+		body {
+			background-color: lightgrey;
+			font-size: 110%;
+			color: blue;
+		}
+
+		.display {
+			margin: 20px;
+			background-color: black;
+			color: cyan;
+			font-size: 3rem;
+			text-align: center;
+		}
+
+		.my-note {
+			background-color: #eaf3f5;
+			color: black;
+			border: 2px solid black;
+			padding: 5px;
+			margin: 1rem 0;
+			box-shadow: 1px 1px gray;
+			border-radius: 7px;
+		}
+	</style>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<h1 align="center">Find a Path to a Given Node</h1>
+	<div class="my-note" style="margin: 0 10%; font-size: 2rem;">
+		<font color="red"><b><u>Note:</u></b></font> the value of each node whould be completely randomized (but different from each others, kind of IDs). The tree is checked, node by node 
+		(from left to right), until the value of the given value is found (then the "search" process will stop, <u>the rest of the tree won't be checked</u>)
+	</div>
+	<hr/>
+	<p align="center"><img src="./assets/tree.jpg" /></p>
+	<div class="display">
+		Path: <span id="displayArea">0 &rarr; 1</span>
+
+		<br />
+		Select a node:
+		<select id="nodeId" onchange="updateDisplay()">
+			<option value="1" selected>1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+		</select>
+	</div>
+
+	<script src="assets/script.js"></script>
+	<script>
+		function updateDisplay() {
+			document.getElementById("displayArea").innerHTML = showPathTo(parseInt($("#nodeId").val()))
+		}
+	</script>
+</body>
+
+</html>
