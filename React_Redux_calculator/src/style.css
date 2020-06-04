@@ -1,0 +1,33 @@
+.button{
+    width: 4rem;
+    text-align: center;
+    margin: .5rem;
+    font-size: 3rem;
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+}
+
+.button:hover{
+    background-color: cyan;
+    color: black;
+    cursor: pointer;
+}
+
+.button-inactive{
+    width: 4rem;
+    text-align: center;
+    margin: .5rem;
+    font-size: 3rem;
+    background-color: #c2c2c2;
+    color: black;
+    border-radius: 8px;
+}
+
+.container{
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
